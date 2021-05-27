@@ -1,16 +1,14 @@
-import tmdbAPI from "../API/tmdbAPI"
-import MovieItem from "./MovieItem"
+import {useHistory} from "react-router-dom"
 
 import "./Content.css"
 
-import {useHistory} from "react-router-dom"
+import tmdbAPI from "../API/tmdbAPI"
+import MovieItem from "./MovieItem"
 
 
 
 
-const Content = ({id, page, setMovies, setPage, genreName, movies}) => {
-
-    
+const Content = ({genreId, page, setMovies, setPage, genreName, movies}) => {
 
     let history = useHistory();
 
@@ -21,15 +19,15 @@ const Content = ({id, page, setMovies, setPage, genreName, movies}) => {
     let changeUrlForPrefPageButton;
     
 
-    if (isNaN(id) ) {
-        changePageForNextPageButton = `/movie/${id}?api_key=${process.env.REACT_APP_API}&language=en-US&page=${(page + 1)}`
-        changePageForPrefPageButton = `/movie/${id}?api_key=${process.env.REACT_APP_API}&language=en-US&page=${(page - 1)}`
+    if (isNaN(genreId) ) {
+        changePageForNextPageButton = `/movie/${genreId}?api_key=${process.env.REACT_APP_API}&language=en-US&page=${(page + 1)}`
+        changePageForPrefPageButton = `/movie/${genreId}?api_key=${process.env.REACT_APP_API}&language=en-US&page=${(page - 1)}`
         //Change displayed URL
         changeUrlForNextPageButton = `/Discover/${genreName}/Page=${page + 1}`;
         changeUrlForPrefPageButton = `/Discover/${genreName}/Page=${page - 1}`;
     } else {
-        changePageForNextPageButton = `/discover/movie?api_key=${process.env.REACT_APP_API}&language=en-US&page=${(page + 1)}&with_genres=${id}`
-        changePageForPrefPageButton = `/discover/movie?api_key=${process.env.REACT_APP_API}&language=en-US&page=${(page - 1)}&with_genres=${id}`
+        changePageForNextPageButton = `/discover/movie?api_key=${process.env.REACT_APP_API}&language=en-US&page=${(page + 1)}&with_genres=${genreId}`
+        changePageForPrefPageButton = `/discover/movie?api_key=${process.env.REACT_APP_API}&language=en-US&page=${(page - 1)}&with_genres=${genreId}`
         //Change displayed URL
         changeUrlForNextPageButton = `/Genre/${genreName}/Page=${page + 1}`
         changeUrlForPrefPageButton = `/Genre/${genreName}/Page=${page - 1}`
@@ -46,6 +44,7 @@ const Content = ({id, page, setMovies, setPage, genreName, movies}) => {
                 history.push(changeUrlForNextPageButton)
                 fetchData();
                 window.scrollTo(0,0);
+                console.log("GenreId:" ,genreId, "Page", page);
 
     };
 
@@ -71,7 +70,13 @@ const Content = ({id, page, setMovies, setPage, genreName, movies}) => {
             <div className="content-movies">
                 {/* Rendering the Moives to the display */}
                 {movies ? movies.results.map(movie => (
-                    <MovieItem movie={movie} key={movie.id} poster_path={movie.poster_path} title={movie.title} id={movie.id} />
+                    <MovieItem 
+                        movie={movie} 
+                        key={movie.id} 
+                        poster_path={movie.poster_path} 
+                        title={movie.title} 
+                        id={movie.id} 
+                    />
                 )) : null}
             </div>
             <div className="pageNav">
