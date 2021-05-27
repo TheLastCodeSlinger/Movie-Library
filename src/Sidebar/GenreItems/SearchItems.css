@@ -1,0 +1,47 @@
+.searchbarItems {
+    display: block;
+    position:sticky;
+    top: -100rem;    
+    letter-spacing: 0.2rem;
+}
+
+.searchbarItems h2 {
+    background-color: rgba(157, 184, 207, 0.623);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 2rem;
+    
+}
+
+.searchbarItem-container {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    border-radius: 22px;
+    background-color: rgba(216, 220, 224, 0.829);
+    padding: 0.6rem 1rem;
+    margin: 1rem 1.5rem;;
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    border: 1px solid grey;
+    text-decoration: none;
+    color: black;
+}
+
+.searchbarItem-container:hover{
+    background-color: rgba(82, 78, 78, 0.795);
+    color: white;
+}
+
+.eins {
+    background-color: transparent;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+}
+
+.zwei {
+    background-color: transparent;
+}
+

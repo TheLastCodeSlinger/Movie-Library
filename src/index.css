@@ -1,0 +1,19 @@
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    display: block;
+    scroll-behavior: smooth;
+}
+
+/*@media only screen and (max-width: 97em){
+    html{
+        font-size: 57.5%;
+    }
+}
+*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Roboto", sans-serif;
+}
