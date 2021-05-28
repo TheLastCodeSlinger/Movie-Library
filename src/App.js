@@ -17,6 +17,8 @@ function App() {
   const [genreId, setGenreId] = useState(null);
   const [genreName, setGenreName] = useState(null);
   const [genre, setGenre] = useState(0)
+  const [movieDetails, setMovieDetails] = useState(null)
+
 
   
   useEffect(() => {
@@ -99,9 +101,10 @@ function App() {
                   genre={genre} 
                 /> 
               </Route> 
-              <Route path="/Movie/:movieName"  >
+              <Route path="/Movie/:movieName/:movieId"  >
                 <MovieDetails 
-                  genreId={genreId} 
+                movieDetails={movieDetails}
+                setMovieDetails={setMovieDetails}
                 />
               </Route>
               <Route path="*">
