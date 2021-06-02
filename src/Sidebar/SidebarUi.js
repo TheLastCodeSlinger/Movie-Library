@@ -1,16 +1,23 @@
 import "./SidebarUi.css"
-import Logo from "./Logo/Logo"
-import SearchItems from "./GenreItems/SearchItems"
 
-const SidebarUi = ({setPage, setMovies, movies, setId, setGenreName, page, genreName, genre}) => {
+import Logo from "./Logo/Logo"
+import SidebarLinkContainer from "./GenreItems/SidebarLinkContainer"
+
+
+
+
+
+const SidebarUi = ({setPage, setMovies, movies, setGenreId, setGenreName, page, genreName, genre}) => {
+
     return (
+        
     <div className="sidebar">
         <Logo />
-        <SearchItems 
+        <SidebarLinkContainer 
             setPage={setPage} 
             setMovies={setMovies} 
             movies={movies} 
-            setId={setId} 
+            setGenreId={setGenreId} 
             setGenreName={setGenreName} 
             page={page} 
             genreName={genreName} 

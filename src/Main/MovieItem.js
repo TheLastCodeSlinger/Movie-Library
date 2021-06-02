@@ -20,8 +20,9 @@ const MovieItem = movie => {
                 <img 
                     className="itemBoxImage" 
                     src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} 
-                    alt="" 
+                    alt={movie.title} 
                     onLoad={()=>setLoading(true)} 
+                    //If display: none, the spinner will be displayed
                     style={!loading ? {display: "none"} : {}}  
                 />
                 <div 

@@ -4,13 +4,14 @@ import "./Content.css"
 
 import tmdbAPI from "../API/tmdbAPI"
 import MovieItem from "./MovieItem"
+import {NextPageButton, PrevPageButton} from "./NextPrefPageButton"
 
 
 
 
 const Content = ({genreId, page, setMovies, setPage, genreName, movies}) => {
 
-    let history = useHistory();
+   // let history = useHistory();
 
     // Get the ID from clicked Genre/Discover and change buttons. Genre-Id's are numbers / Discover-Id's are strings (popular,upcoming,top_rated)
     let changePageForNextPageButton;
@@ -34,17 +35,18 @@ const Content = ({genreId, page, setMovies, setPage, genreName, movies}) => {
 
     }
         
-
+/*
     const nextPageHandler = () => {
         const fetchData = async () => { 
             const result = await tmdbAPI.get(changePageForNextPageButton);
                 setMovies(result.data);
-                setPage(result.data.page);
+                
             };
-                history.push(changeUrlForNextPageButton)
+                //history.push(changeUrlForNextPageButton)
+                setPage(page + 1)
                 fetchData();
                 window.scrollTo(0,0);
-                console.log("GenreId:" ,genreId, "Page", page);
+                
 
     };
 
@@ -52,20 +54,21 @@ const Content = ({genreId, page, setMovies, setPage, genreName, movies}) => {
         const fetchData = async () => { 
             const result = await tmdbAPI.get(changePageForPrefPageButton);
                 setMovies(result.data);
-                setPage(result.data.page);
+                setPage(page - 1);
             };
-                history.push(changeUrlForPrefPageButton)
+                //history.push(changeUrlForPrefPageButton)
                 fetchData();
                 window.scrollTo(0,0);
     };
     
-
+*/
 
     return (
         <div className="container-main">
             <div className="content-header">
                 <div className="content-direction" >{genreName ? genreName : "POPULAR"}</div>
                 <div className="movie">Movies</div>
+                {console.log("GenreId:" ,genreId, "Page", page)}
             </div>
             <div className="content-movies">
                 {/* Rendering the Moives to the display */}
@@ -80,8 +83,24 @@ const Content = ({genreId, page, setMovies, setPage, genreName, movies}) => {
                 )) : null}
             </div>
             <div className="pageNav">
-                <button className="nextPage" onClick={()=>nextPageHandler()} >{`Page ${(page + 1)}`}</button>
-                {page > 1 ? <button className="prefPage" onClick={() => prefPageHandler()} >{`Page ${(page - 1)}`}</button> : null}
+                <NextPageButton 
+                setMovies={setMovies} 
+                setPage={setPage} 
+                page={page} 
+                loadNextContent={changePageForNextPageButton} 
+                changeNextUrl={changeUrlForNextPageButton}
+                genreId={genreId} />
+                {/*<button className="nextPage" onClick={()=>nextPageHandler()} >{`Page ${(page + 1)}`}</button>*/}
+                {/*page > 1 ? <button className="prefPage" onClick={() => prefPageHandler()} >{`Page ${(page - 1)}`}</button> : null*/}
+                { page > 1 ? 
+                <PrevPageButton 
+                setMovies={setMovies} 
+                setPage={setPage} 
+                page={page} 
+                loadPrevContent={changePageForPrefPageButton} 
+                changePrevUrl={changeUrlForPrefPageButton} 
+                genreId={genreId} />
+                 : null}
 
             </div>
         </div>

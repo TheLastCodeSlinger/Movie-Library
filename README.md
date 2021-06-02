@@ -1,3 +1,5 @@
+Comment code in /node_modules/history/esm/history.js:87 to avoid throwing an error.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

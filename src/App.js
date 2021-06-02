@@ -12,20 +12,22 @@ import RenderGenre from './Sidebar/GenreItems/RenderClickedGenre'
 import MovieDetails from './Main/MovieDetails'
 
 function App() {
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState();
   const [page, setPage] = useState(1);
-  const [genreId, setGenreId] = useState(null);
-  const [genreName, setGenreName] = useState(null);
-  const [genre, setGenre] = useState(0)
-  const [movieDetails, setMovieDetails] = useState(null)
+  const [genreId, setGenreId] = useState();
+  const [genreName, setGenreName] = useState();
+  const [genre, setGenre] = useState(0);
+  const [movieDetails, setMovieDetails] = useState();
 
 
   
+
+
+  //Loading the movies for the landing/first page and setting states
   useEffect(() => {
       const fetchData = async () => { 
           const result = await tmdbAPI.get(`/movie/popular?api_key=${process.env.REACT_APP_API}&language=en-US&page=1`);
                 setMovies(result.data);
-                setPage(result.data.page);
                 setGenreName("Popular")
                 setGenreId("popular")
               };
@@ -35,8 +37,8 @@ function App() {
           
 
 
+          //Fetch an Array, where all Genre-Tags are listed as strings.
   useEffect(() => {
-      //Fetch an Array, where all Genre-Tags are listed as strings.
         const fetchData = async () => {
           const result = await tmdbAPI.get(`/genre/movie/list?api_key=${process.env.REACT_APP_API}&language=en-US`);
               setGenre(result.data)
@@ -46,20 +48,19 @@ function App() {
           }, [])
 
   return (
-
+    
       <Router>
         <div className="container">
-        <SidebarUi 
-          setMovies={setMovies} 
-          setPage={setPage} 
-          movies={movies} 
-          setGenreId={setGenreId} 
-          setGenreName={setGenreName} 
-          page={page} 
-          genreName={genreName} 
-          genre={genre} 
-        />
-
+          <SidebarUi 
+            setMovies={setMovies} 
+            setPage={setPage} 
+            movies={movies} 
+            setGenreId={setGenreId} 
+            setGenreName={setGenreName} 
+            page={page} 
+            genreName={genreName} 
+            genre={genre} 
+          />
         
         <Switch>
               <Route path="/" exact  >
@@ -75,7 +76,8 @@ function App() {
                   genre={genre}   
                 />
               </Route>
-              <Route path={`/Discover/:discName/`}>
+
+              <Route path={`/Discover/:discName/Page=:pageNr`} >
                 <RenderDiscover 
                   setMovies={setMovies} 
                   movies={movies} 
@@ -88,7 +90,8 @@ function App() {
                   genre={genre} 
                 />
               </Route>
-              <Route path={`/Genre/:genName/`} > 
+
+              <Route path={`/Genre/:genName/Page=:pageNr`} > 
                 <RenderGenre 
                   setMovies={setMovies} 
                   movies={movies} 
@@ -101,18 +104,20 @@ function App() {
                   genre={genre} 
                 /> 
               </Route> 
+
               <Route path="/Movie/:movieName/:movieId"  >
                 <MovieDetails 
                 movieDetails={movieDetails}
                 setMovieDetails={setMovieDetails}
                 />
               </Route>
+
               <Route path="*">
                 <div>ERROR</div>
               </Route>
-          </Switch></div>
-        </Router>
-        );
-      }
+        </Switch></div>
+      </Router>
+    );
+  }
 
 export default App;

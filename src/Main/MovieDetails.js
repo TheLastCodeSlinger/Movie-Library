@@ -9,7 +9,7 @@ import LazyLoad from "react-lazyload";
 
 const MovieDetails = ({movieDetails, setMovieDetails}) => {
     const match = useRouteMatch();
-    const [cast, setCast] = useState(null)
+    const [cast, setCast] = useState()
     
     useEffect(()=> {
         const movieId = match.params.movieId;
