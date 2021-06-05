@@ -1,15 +1,15 @@
 import {useState, useEffect} from "react"
 import {Switch, Route, BrowserRouter as Router} from "react-router-dom"
 
-import './App.css';
+import './Css/App.css';
 
-import SidebarUi from './Sidebar/SidebarUi'
+import Sidebar from './Sidebar'
 
-import tmdbAPI from './API/tmdbAPI'
-import LandingPage from "./Sidebar/GenreItems/LandingPage"
-import RenderDiscover from './Sidebar/GenreItems/RenderClickedDiscoverItem'
-import RenderGenre from './Sidebar/GenreItems/RenderClickedGenre'
-import MovieDetails from './Main/MovieDetails'
+import tmdbAPI from '../API/tmdbAPI'
+import LandingPage from "./Home"
+import RenderDiscover from './Discover'
+import RenderGenre from './Genre'
+import MovieDetails from '../components/MovieDetails'
 
 function App() {
   const [movies, setMovies] = useState();
@@ -19,19 +19,15 @@ function App() {
   const [genre, setGenre] = useState(0);
   const [movieDetails, setMovieDetails] = useState();
 
-
-  
-
-
   //Loading the movies for the landing/first page and setting states
   useEffect(() => {
-      const fetchData = async () => { 
+      const fetchPopularDataInitial = async () => { 
           const result = await tmdbAPI.get(`/movie/popular?api_key=${process.env.REACT_APP_API}&language=en-US&page=1`);
                 setMovies(result.data);
                 setGenreName("Popular")
                 setGenreId("popular")
               };
-                fetchData()
+                fetchPopularDataInitial()
                 console.log("Fetching & Setting movies/popular - APP/JS");
           },[])
           
@@ -39,11 +35,11 @@ function App() {
 
           //Fetch an Array, where all Genre-Tags are listed as strings.
   useEffect(() => {
-        const fetchData = async () => {
+        const fetchGenreCateforiesData = async () => {
           const result = await tmdbAPI.get(`/genre/movie/list?api_key=${process.env.REACT_APP_API}&language=en-US`);
               setGenre(result.data)
             };
-              fetchData()
+              fetchGenreCateforiesData()
               console.log("Fetch Genre-Tags (action,comedy etc)");
           }, [])
 
@@ -51,7 +47,7 @@ function App() {
     
       <Router>
         <div className="container">
-          <SidebarUi 
+          <Sidebar
             setMovies={setMovies} 
             setPage={setPage} 
             movies={movies} 

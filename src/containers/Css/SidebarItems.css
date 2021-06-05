@@ -1,11 +1,11 @@
-.searchbarItems {
+.sidebarItemsWrapper {
     display: block;
     position:sticky;
     top: -100rem;    
     letter-spacing: 0.2rem;
 }
 
-.searchbarItems h2 {
+.sidebarItemsWrapper h2 {
     background-color: rgba(157, 184, 207, 0.623);
     border-radius: 12px;
     padding: 2rem;
@@ -15,7 +15,7 @@
     
 }
 
-.searchbarItem-container {
+.sidebarItem {
     font-size: 1.5rem;
     margin-bottom: 0.8rem;
     border-radius: 22px;
@@ -34,14 +34,14 @@
     color: white;
 }
 
-.eins {
+.sidebarIcon {
     background-color: transparent;
     display: flex;
     align-self: center;
     justify-self: center;
 }
 
-.zwei {
+.sidebarGenreTag {
     background-color: transparent;
 }
 

@@ -1,21 +1,20 @@
 
-.itemBoxWrapper {
+.movieItemWrapper {
     flex-direction: column;
     position: relative;
     box-shadow: 0rem 2rem 5rem rgba(155, 140, 140, 0.644);
     display: flex;
-     
     
 }
 
-.itemBoxImage {
+.movieItemImage {
     width: 100%;
     background-color: transparent;
     height: 33rem;
     box-shadow: 5px 4px 10px -2px rgba(61,68,71,0.78);
 }
 
-.loada {
+.loader {
     width: 100%;
     display: flex;
     align-items: center;
@@ -23,7 +22,7 @@
     min-height: 300px;
 }
 
-.movie-title {
+.movieItemTitle {
     font-size: 2rem;
     padding: 0 0.7rem;
     display: flex;

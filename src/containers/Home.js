@@ -1,31 +1,27 @@
 import { useEffect } from "react"
 
-import tmdbAPI from '../../API/tmdbAPI';
-import Content from "../../Main/Content"
-
+import tmdbAPI from '../API/tmdbAPI';
+import Content from "../components/Content"
 
 
 
 
 const LandingPage = ({setMovies, setPage, setGenreName, setGenreId, movies, page, genreId, genreName }) => {
-    
+
     //Fetch Discover/Popular page and render it
     useEffect(() => {
-        const fetchData = async() => {
+        const fetchPopularPageOneData = async() => {
             const result = await tmdbAPI.get(`/movie/popular?api_key=${process.env.REACT_APP_API}&language=en-US&page=1`);
                 setMovies(result.data)
                 setGenreName("Popular")
                 setGenreId("popular")
                 setPage(1)
-                console.log("Fetching & Setting movies/popular - APP/JS");
             }
-                fetchData()
+                fetchPopularPageOneData()
             }, [genreId])
             
-            console.log("LandingPage?", page)
 
             return (
-                
                 <Content 
                 movies={movies} 
                 setMovies={setMovies} 

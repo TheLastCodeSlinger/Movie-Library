@@ -2,7 +2,7 @@ import { useEffect, useState} from "react"
 import LazyLoad from "react-lazyload"
 import { Link } from "react-router-dom"
 
-import "./MovieItems.css"
+import "./Css/MovieItems.css"
 
 import Loader from "react-loader-spinner"
 
@@ -15,10 +15,14 @@ const MovieItem = movie => {
 
     return  ( 
         <LazyLoad  offset={200} height={200}>
-            <Link to={`/Movie/${movie.title}/${movie.id}`} className="itemBox-container" key={movie.id}>
-                {!loading ? <div className="loada"><Loader type="Puff"  /></div> : null}
+            <Link to={`/Movie/${movie.title}/${movie.id}`} 
+                    className="movieItemWrapper" 
+                    key={movie.id}>
+                {!loading ? <div className="loader">
+                                <Loader type="Puff"  />
+                            </div> : null}
                 <img 
-                    className="itemBoxImage" 
+                    className="movieItemImage" 
                     src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} 
                     alt={movie.title} 
                     onLoad={()=>setLoading(true)} 
@@ -26,7 +30,7 @@ const MovieItem = movie => {
                     style={!loading ? {display: "none"} : {}}  
                 />
                 <div 
-                    className="movie-title" 
+                    className="movieItemTitle" 
                     style={!loading ? {display: "none" } : {}}>
                     {movie.title}
                 </div>

@@ -1,0 +1,122 @@
+.movieDetailsWrapper {
+    width:inherit;
+    height: 100%;
+    padding: 5rem 3rem;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+}
+
+.movieDetail-informations {
+    height: 80vh;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    margin: 0 8rem 4rem;
+}
+
+.movieDetail-posterImage {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+.movieDetail-posterImage img {
+    width: 400px; 
+    height: 600px;   
+    border-radius: 12px;
+}
+
+.movieDetail-infoWrapper {
+    padding: 4rem 2rem 2rem;
+    min-width: 500px;
+}
+
+.movieDetail-informations h3 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.9rem;
+}
+
+.movieDetail-title{
+    font-size: 4rem;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.movieDetail-tagline {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+.movieDetail-rating-stats-wrapper {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.movieDetail-stats {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.movieDetail-rating {
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.movieDetails-genrelist {
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex;
+    
+
+    
+}
+
+.movieDetails-plot {
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    margin-bottom: 5rem;
+}
+
+.recommendationWrapper {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 25rem));
+    justify-content: space-evenly;
+    align-content: space-between;
+    align-items: flex-start;
+    gap: 4rem 2rem;
+    padding: 4rem 0rem;
+}
+
+@media only screen and (max-width: 1366px){
+    .recommendationWrapper {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 23rem));
+        justify-content: space-around;
+        gap: 4rem 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 1366px){
+    .recommendationWrapper {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 19rem));
+        gap: 4rem 1rem;
+    }
+}
+
+.movieDetail-genreTagWrapper {
+    display: grid;
+    grid-template-columns: 1.5rem 1fr;
+    margin-right: 1rem;
+
+}
+
+

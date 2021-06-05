@@ -1,5 +1,5 @@
-import "./Logo.css";
-import { ReactComponent as ReactLogo} from "../../Assets/TMDB-Logo.svg"
+import "./Css/Logo.css";
+import { ReactComponent as ReactLogo} from "../Assets/TMDB-Logo.svg"
 
 
 const Logo = () => {
