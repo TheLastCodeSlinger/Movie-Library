@@ -1,8 +1,9 @@
 import {Link} from "react-router-dom";
+import {animateScroll as scroll} from 'react-scroll';
 
-import "./Button.css"
+import "./Button.css";
 
-import tmdbAPI from '../../API/tmdbAPI'
+import tmdbAPI from '../../API/tmdbAPI';
 
 
 
@@ -12,25 +13,44 @@ const NextPageButton = ({setMovies, setPage, page, genreId, genreName}) => {
 
     let navigateToNextPage;
     let changeUrlToNextPage;
+    let params = {};
 
     //Genres have a Number as Id(2,22,322) whereas Discover has a String-Id (Popular/Top_rated)
     if (isNaN(genreId) ) {
-        navigateToNextPage = `/movie/${genreId}?api_key=${process.env.REACT_APP_API}&language=en-US&page=${(page + 1)}`
-        changeUrlToNextPage = `/Discover/${genreName}/Page=${page + 1}`;
+        changeUrlToNextPage = `/Discover/${genreName}?page=${page + 1}`;
+        navigateToNextPage = (`/movie/${genreId}`);
+        params = {
+            params:{ 
+                language: 'en-US',
+                page: page + 1  
+            },
+        };
     } else {
-        navigateToNextPage = `/discover/movie?api_key=${process.env.REACT_APP_API}&language=en-US&page=${(page + 1)}&with_genres=${genreId}`
-        changeUrlToNextPage = `/Genre/${genreName}/Page=${page + 1}`
-
+        changeUrlToNextPage = `/Genre/${genreName}?page=${page + 1}`;
+        navigateToNextPage = (`/discover/movie`);
+        params = {
+            params: {
+                language: 'en-US', 
+                page:page + 1, 
+                with_genres: genreId
+            },
+        };
     };
     
     const nextPageHandler = () => {
+        
         const fetchData = async () => { 
-            const result = await tmdbAPI.get(navigateToNextPage);
+            const result = await tmdbAPI.get(navigateToNextPage, params);
                 setMovies(result.data);
+                console.log("nextpage resukt:", page);
             };
-                setPage(page + 1)
-                fetchData();
-                window.scrollTo(0,0);
+                setPage(page + 1);
+                fetchData();;
+                scroll.scrollToTop({
+                    smooth: true,
+                    duration: 600,
+                    offSet: 100
+                });
     };
 
     return (
@@ -39,8 +59,7 @@ const NextPageButton = ({setMovies, setPage, page, genreId, genreName}) => {
                 pathname: `${changeUrlToNextPage}`,
                 state: { id: genreId }
                 }}
-                className="nextPage"
-        >
+                className="nextPage">
             <button className="button" onClick={nextPageHandler}>Next Page {page + 1}</button>
         </Link>
     )

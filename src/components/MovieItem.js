@@ -8,6 +8,7 @@ import Loader from "react-loader-spinner"
 
 const MovieItem = movie => {
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         return () => setLoading(false)
@@ -23,11 +24,18 @@ const MovieItem = movie => {
                             </div> : null}
                 <img 
                     className="movieItemImage" 
-                    src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} 
+                    src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`} 
                     alt={movie.title} 
                     onLoad={()=>setLoading(true)} 
                     //If display: none, the spinner will be displayed
                     style={!loading ? {display: "none"} : {}}  
+                    error={error ? true : false}
+                    onError={e => {
+                        setError(true);
+                        if(e.target.src !== "hello" ) {
+                            e.target.src = null
+                        }
+                    }}
                 />
                 <div 
                     className="movieItemTitle" 

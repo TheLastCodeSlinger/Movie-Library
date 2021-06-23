@@ -1,4 +1,5 @@
 import {Link} from "react-router-dom";
+import {animateScroll as scroll} from 'react-scroll'
 
 import "./Button.css"
 
@@ -11,25 +12,43 @@ const PreviousPageButton = ({setMovies, setPage, page, genreId, genreName}) => {
 
     let navigateToPreviousPage;
     let changeUrlToPreviousPage;
+    let params;
 
     //Genres have a Number as Id(2,22,322) whereas Discover has a String-Id (Popular/Top_rated)
     if (isNaN(genreId) ) {
-        navigateToPreviousPage = `/movie/${genreId}?api_key=${process.env.REACT_APP_API}&language=en-US&page=${(page - 1)}`
-        changeUrlToPreviousPage = `/Discover/${genreName}/Page=${page - 1}`;
+        navigateToPreviousPage = `/movie/${genreId}}`;
+        changeUrlToPreviousPage = `/Discover/${genreName}?page=${page - 1}`;
+        params = {
+            params: {
+                language: 'en-US',
+                page: page - 1
+            },
+        };
     } else {
-        navigateToPreviousPage = `/discover/movie?api_key=${process.env.REACT_APP_API}&language=en-US&page=${(page - 1)}&with_genres=${genreId}`
-        changeUrlToPreviousPage = `/Genre/${genreName}/Page=${page - 1}`
+        navigateToPreviousPage = `/discover/movie`;
+        changeUrlToPreviousPage = `/Genre/${genreName}?page=${page - 1}`;
+        params = {
+            params: {
+                language: 'en-US',
+                page: page - 1,
+                with_genres: genreId
+            },
+        };
     };
 
 
     const prevPageHandler = () => {
         const fetchData = async () => { 
-            const result = await tmdbAPI.get(navigateToPreviousPage);
+            const result = await tmdbAPI.get(navigateToPreviousPage, params);
                 setMovies(result.data);
                 setPage(page - 1);
             };
                 fetchData();
-                window.scrollTo(0,0);
+                scroll.scrollToTop({
+                    smooth: true,
+                    duration: 600,
+                    offSet: 100
+                });
     };
 
     return (

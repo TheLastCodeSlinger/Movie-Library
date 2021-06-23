@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import {Link} from 'react-router-dom'
 
 import {MdPlayArrow} from "react-icons/md";
-import "./Css/SidebarItems.css"
+import "./Css/SidebarItems.css";
 
 
 
@@ -14,15 +14,15 @@ export const SidebarRenderLinksDiscovery = () => {
         <Fragment>
             <Link className="sidebarItem"
                 to={{
-                    pathname: `/Discover/Popular/Page=1`,
-                    state: { id: `popular` }
+                    pathname: `/Discover/Popular`,
+                    state: { id: `popular`, page: 1 }
                     }}>
                 <div className="sidebarIcon"><MdPlayArrow /></div>
                 <div className="sidebarGenreTag">Popular</div>
             </Link>
             <Link className="sidebarItem"
                 to={{
-                    pathname: `/Discover/Top-Rated/Page=1`,
+                    pathname: `/Discover/Top_Rated`,
                     state: { id: `top_rated` }
                 }}>
                 <div className="sidebarIcon"><MdPlayArrow /></div>
@@ -30,15 +30,15 @@ export const SidebarRenderLinksDiscovery = () => {
             </Link>
             <Link className="sidebarItem"
                 to={{
-                    pathname: `/Discover/Upcoming/Page=1`,
+                    pathname: `/Discover/Upcoming`,
                     state: { id: `upcoming` }
                 }}>
                 <div className="sidebarIcon"><MdPlayArrow /></div>
                 <div className="sidebarGenreTag">Upcoming</div>
             </Link>
         </Fragment>
-    )
-}
+    );
+};
 
 
 export const SidebarRenderLinksGenre = (genre) => {
@@ -48,7 +48,7 @@ export const SidebarRenderLinksGenre = (genre) => {
             className="sidebarItem" 
             to={{
                 //Save genre-id in state. Id can be globally accessed with "const location= useLocation & const {id} = location.?id"
-                pathname: `/Genre/${genre.genre.name}/Page=1`,
+                pathname: `/Genre/${genre.genre.name}`,
                 state: {
                         id: genre.genre.id,
                         }
@@ -58,5 +58,5 @@ export const SidebarRenderLinksGenre = (genre) => {
                 <div className="sidebarIcon"><MdPlayArrow /></div>
                 <div className="sidebarGenreTag">{genre.genre.name}</div>
             </Link>
-        )
+        );
     };

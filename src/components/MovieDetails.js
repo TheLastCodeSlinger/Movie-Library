@@ -8,7 +8,8 @@ import {MdPlayArrow} from "react-icons/md";
 
 import tmdbAPI from '../API/tmdbAPI'
 import MovieItem from './MovieItem'
-import Cast from './Cast'
+import Cast from './Cast';
+import {ExternalHomePage, Imdb, Trailer} from './ExternalLinks'
 
 
 
@@ -18,6 +19,7 @@ const MovieDetails = ({movieDetails, setMovieDetails}) => {
     const [cast, setCast] = useState()
     const [recommendedMovies, setRecommendedMovies] = useState();
     const movieId = match.params.movieId
+    const [trailer, setTrailer] = useState(null)
     
     useEffect(()=> {
         const fetchAllMovieDetails = async () => {
@@ -25,7 +27,8 @@ const MovieDetails = ({movieDetails, setMovieDetails}) => {
             setMovieDetails(result.data)
         }
         fetchAllMovieDetails()
-    }, [MovieDetails, movieId])
+        console.log(movieDetails);
+    }, [ movieId])
 
 
     useEffect(() => {
@@ -44,7 +47,20 @@ const MovieDetails = ({movieDetails, setMovieDetails}) => {
         }
         fetchRecommendedMovies()
     },[movieDetails, movieId])
-    
+
+    useEffect(() => {
+        const fetchTrailerDetails  = async () => {
+            const result = await tmdbAPI.get(`movie/${movieId}/videos`, {
+                params: {
+                    language: 'en-US'
+                }
+            })
+            setTrailer(result.data)
+            console.log(result.data, "ME FROM TRAILER");
+        }
+        fetchTrailerDetails()
+    }, [movieId])
+
     
         let movieIncludesGenres;
         if(movieDetails){
@@ -79,8 +95,15 @@ const MovieDetails = ({movieDetails, setMovieDetails}) => {
                             <div className="movieDetails-genrelist">{movieIncludesGenres}</div>
                         <h3>OVERVIEW:</h3>
                             <div className="movieDetails-plot">{movieDetails.overview}</div>
-                        <h3>THE CAST:</h3>
-                            { cast && <Cast cast={cast} />}
+                            <div className="externalLinksWrapper">
+                                {trailer && <Trailer url={trailer} />}
+                                <Imdb url={movieDetails.id} />
+                                <ExternalHomePage url={movieDetails.homepage} />
+                            </div>
+                            <div className="cast">
+                                <h3>THE CAST:</h3>
+                                { cast && <Cast cast={cast} />}
+                            </div>
                     </div>
                 </div>
                 <h2 className="movieDetails-title">RECOMMENDATION</h2>

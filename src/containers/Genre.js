@@ -1,5 +1,6 @@
 import { useLocation, useParams} from "react-router-dom";
 import {useEffect} from "react"
+import {animateScroll as scroll} from 'react-scroll'
 
 import tmdbAPI from '../API/tmdbAPI';
 import Content from '../components/Content'
@@ -20,16 +21,28 @@ const RenderGenre = ({setMovies, setPage, setGenreId, setGenreName, page, genreN
     //Fetch the Genre-List > setMovies to this List > Rerender & Display Genre-Page1
     useEffect(() => {
             const fetchClickedCategoryData = async() => {
-            const result = await tmdbAPI.get(`/discover/movie?api_key=${process.env.REACT_APP_API}&language=en-US&page=1&with_genres=${id}`);
+            const result = await tmdbAPI.get(`/discover/movie`, {
+                params: {
+                    language: 'en-US',
+                    page: page,
+                    with_genres: id
+                }
+            });
                 setMovies(result.data)
                 setGenreId(id)
-                setPage(1)          
             }
+            //check if still in same genre . Yes = nothing happens.
             if(genreId !== id){
                 fetchClickedCategoryData()
+                setPage(1)          
                 setGenreName(genName)
+                scroll.scrollToTop({
+                    smooth: true,
+                    duration: 600,
+                    offSet: 100
+                })
             }
-        },[ id])
+        },[ id, page])
 
 
     return (

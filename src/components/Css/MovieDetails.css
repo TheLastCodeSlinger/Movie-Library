@@ -8,7 +8,7 @@
 }
 
 .movieDetail-informations {
-    height: 80vh;
+    height: 70vh;
     display: grid;
     grid-template-columns: 2fr 3fr;
     margin: 0 8rem 4rem;
@@ -29,6 +29,9 @@
 .movieDetail-infoWrapper {
     padding: 4rem 2rem 2rem;
     min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    height: inherit;
 }
 
 .movieDetail-informations h3 {
@@ -119,4 +122,13 @@
 
 }
 
+.cast {
+    margin-top: auto;
+    margin-bottom: 50px;
+}
 
+.externalLinksWrapper{
+    display: flex;
+    height: 40px;
+    justify-content:left;
+}
