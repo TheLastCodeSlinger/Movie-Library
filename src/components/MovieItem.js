@@ -3,8 +3,8 @@ import LazyLoad from "react-lazyload";
 import { Link } from "react-router-dom";
 
 import "./Css/MovieItems.css";
-
 import Loader from "react-loader-spinner";
+import Rating from "./Rating";
 
 const MovieItem = (movie) => {
   const [loading, setLoading] = useState(false);
@@ -43,9 +43,11 @@ const MovieItem = (movie) => {
         />
         <div
           className="movieItemTitle"
-          style={!loading ? { display: "none" } : {}}
+          style={!loading ? { display: "none" } : {} }
         >
           {movie.title}
+          <Rating number={movie.movie.vote_average / 2} />
+          
         </div>
       </Link>
     </LazyLoad>
