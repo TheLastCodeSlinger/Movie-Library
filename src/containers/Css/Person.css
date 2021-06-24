@@ -1,0 +1,110 @@
+.wrapper {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.personWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+    margin-bottom: 7rem;
+}
+
+@media only screen and (max-width: 920px) {
+    .personWrapper {
+      flex-direction: column;
+      margin-bottom: 5rem;
+    }
+  }
+
+.personImgWrapper {
+    width: 40%;
+    flex: 1 1 40%;
+    padding: 4rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .personImgWrapper {
+      width: 60%;
+      flex: 1 1 60%;
+    }
+  }
+
+.personImg {
+    max-height: 100%;
+    height: auto;
+    object-fit: cover;
+    max-width: 100%;
+    border-radius: 0.8rem;
+    box-shadow: 0rem 2rem 5rem black;
+}
+
+.personDetails {
+    width: 60%;
+    padding: 4rem;
+    flex: 1 1 60%;
+}
+
+@media only screen and (max-width: 920px) {
+    .personDetails {
+      width: 90%;
+      flex: 1 1 90%;
+    }
+  }
+
+.personName {
+    color: rgb(75, 97, 104);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-size: 1.7rem;
+}
+
+.personBirthday {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5rem;
+    font-size: 1.3rem;
+    line-height: 1;
+    font-weight: 700;
+    color: rgb(75, 97, 104);
+}
+
+.personBiography {
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: rgb(111, 144, 155);
+    font-weight: 500;
+    margin-bottom: 3rem;
+    margin-top: 1.5rem;
+}
+
+.personCreditMoviesWrapper {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 25rem));
+    justify-content: space-evenly;
+    align-content: space-between;
+    align-items: flex-start;
+    gap: 4rem 2rem;
+    padding: 4rem 0rem;
+}
+
+@media only screen and (max-width: 1366px){
+    .personCreditMoviesWrapper {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 23rem));
+        justify-content: space-around;
+        gap: 4rem 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 1366px){
+    .personCreditMoviesWrapper {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 19rem));
+        gap: 4rem 1rem;
+    }
+}
