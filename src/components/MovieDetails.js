@@ -10,6 +10,7 @@ import tmdbAPI from "../API/tmdbAPI";
 import MovieItem from "./MovieItem";
 import Cast from "./Cast";
 import { ExternalHomePage, Imdb, Trailer } from "./ExternalLinks";
+import Rating from './Rating'
 
 const MovieDetails = ({ movieDetails, setMovieDetails }) => {
   const match = useRouteMatch();
@@ -91,7 +92,7 @@ const MovieDetails = ({ movieDetails, setMovieDetails }) => {
                 </div>
                 <div className="movieDetail-rating-stats-wrapper">
                   <div className="movieDetail-rating">
-                    RATING: {movieDetails.vote_average}
+                    RATING: <Rating number={movieDetails.vote_average/2} />
                   </div>
                   <div className="movieDetail-stats">
                     {movieDetails.original_language} /{" "}
