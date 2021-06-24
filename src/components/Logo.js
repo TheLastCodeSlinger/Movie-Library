@@ -1,7 +1,8 @@
 import "./Css/Logo.css";
 import { ReactComponent as ReactLogo } from "../Assets/TMDB-Logo.svg";
+import { ReactComponent as ReactAvatar} from "../Assets/Avatar.svg"
 
-const Logo = () => {
+export const Logo = () => {
   return (
     <div className="logo">
       <ReactLogo />
@@ -9,4 +10,11 @@ const Logo = () => {
   );
 };
 
-export default Logo;
+
+export const Avatar = () => {
+  return (
+    <div className="avatar">
+      <ReactAvatar />
+    </div>
+  )
+}

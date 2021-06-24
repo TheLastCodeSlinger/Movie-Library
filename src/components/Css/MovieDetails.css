@@ -101,8 +101,8 @@
 .movieDetails-genrelist {
     font-size: 1.5rem;
     font-weight: 400;
-    text-transform: uppercase;
-    margin-bottom: 2rem;
+    text-transform:capitalize;
+    margin: 1rem;
     display: flex;
 }
 

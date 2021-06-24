@@ -4,6 +4,7 @@ import tmdbAPI from "../API/tmdbAPI";
 import "./Css/Person.css";
 import "../components/Css/ExternalLinks.css";
 import MovieItem from "../components/MovieItem";
+import { Avatar } from "../components/Logo";
 
 const Person = () => {
   const match = useRouteMatch();
@@ -49,7 +50,9 @@ const Person = () => {
                 className="personImg"
                 src={`https://image.tmdb.org/t/p/w780/${personData.profile_path}`}
               />
-            ) : null}
+            ) : (
+              <Avatar />
+            )}
           </div>
           <div className="personDetails">
             <div className="personName">{personData.name}</div>
@@ -58,7 +61,7 @@ const Person = () => {
             {personData.biography ? (
               <div className="personBiography">{personData.biography}</div>
             ) : (
-              "There is no biography available..."
+              <p className="personBiography">There is no biography available...</p>
             )}
             <div className="personExternalLinks">
               {personData.homepage ? (

@@ -93,7 +93,7 @@ const MovieDetails = ({ movieDetails, setMovieDetails }) => {
                   <div className="movieDetail-rating">
                     RATING: {movieDetails.vote_average}
                   </div>
-                  <div className="movieDetailstats">
+                  <div className="movieDetail-stats">
                     {movieDetails.original_language} /{" "}
                     {movieDetails.runtime + "MIN"} /{" "}
                     {movieDetails.release_date.slice(0, 4)}

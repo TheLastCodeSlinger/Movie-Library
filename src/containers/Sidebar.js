@@ -1,7 +1,7 @@
 import "./Css/Sidebar.css";
 import "./Css/SidebarItems.css";
 
-import Logo from "../components/Logo";
+import {Logo} from "../components/Logo";
 import {
   SidebarRenderLinksDiscovery,
   SidebarRenderLinksGenre,

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Css/CastItem.css";
+import { Avatar } from "./Logo";
 
 const CastItem = (cast) => {
   return (
@@ -13,7 +14,9 @@ const CastItem = (cast) => {
             src={`https://image.tmdb.org/t/p/w185${cast.cast.profile_path}`}
           />
         ) : (
-          <h2>No</h2>
+          <div className="profile-img">
+          <Avatar className="profile-img" />
+          </div>
         )}
       </div>
     </Link>
