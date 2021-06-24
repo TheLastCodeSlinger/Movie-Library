@@ -1,38 +1,64 @@
-.movieDetailsWrapper {
-    width:inherit;
-    height: 100%;
+.wrapper {
+    width:100%;
     padding: 5rem 3rem;
     flex-direction: column;
     display: flex;
-    justify-content: center;
 }
 
-.movieDetail-informations {
-    height: 70vh;
-    display: grid;
-    grid-template-columns: 2fr 3fr;
-    margin: 0 8rem 4rem;
-}
-
-.movieDetail-posterImage {
+.movieDetail-wrapper {
     display: flex;
-    align-self: center;
+    margin: 0 auto;
+    margin-bottom: 6rem;
+    width: 100%;
+    max-width: 120rem;
+    align-items: center;
     justify-content: center;
 }
 
-.movieDetail-posterImage img {
-    width: 400px; 
-    height: 600px;   
+@media only screen and (max-width: 920px) {
+    .movieDetail-wrapper {
+      flex-direction: column;
+    }
+  }
+
+.movieDetail-posterImageWrapper {
+    width: 100%;
+    max-width: 40%;
+    align-items: center;
+    display: flex;
+    flex: 1 1 40%;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 920px) {
+    .movieDetail-posterImageWrapper {
+      max-width: 60%;
+      flex: 1 1 60%;
+    }
+  }
+
+.movieDetail-posterImageWrapper img {
     border-radius: 12px;
+    height: auto;
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .movieDetail-infoWrapper {
-    padding: 4rem 2rem 2rem;
-    min-width: 500px;
-    display: flex;
-    flex-direction: column;
-    height: inherit;
+    padding: 4rem;
+    max-width: 60%;
+    width: 100%;    
+    flex: 1 1 60%;
+
 }
+
+@media only screen and (max-width: 920px) {
+    .movieDetail-infoWrapper {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+  }
 
 .movieDetail-informations h3 {
     font-weight: 700;
@@ -42,8 +68,9 @@
 }
 
 .movieDetail-title{
-    font-size: 4rem;
-    font-weight: 300;
+    color: rgb(75, 97, 104);
+    font-size: 3rem;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
@@ -56,9 +83,9 @@
 
 .movieDetail-rating-stats-wrapper {
     display: flex;
-    justify-content: space-between;
     font-size: 1.5rem;
     margin-bottom: 2.5rem;
+    justify-content: space-between;
 }
 
 .movieDetail-stats {
@@ -77,24 +104,21 @@
     text-transform: uppercase;
     margin-bottom: 2rem;
     display: flex;
-    
-
-    
 }
 
 .movieDetails-plot {
-    font-size: 1.5rem;
-    letter-spacing: 1px;
+    font-size: 1.7rem;
     line-height: 1.5;
-    margin-bottom: 5rem;
-}
+    margin-bottom: 3rem;
+    font-weight: 500;
+    color: rgb(75, 97, 104);}
 
 .recommendationWrapper {
     display: grid;
     min-height: 100vh;
     grid-template-columns: repeat(auto-fit, minmax(10rem, 25rem));
-    justify-content: space-evenly;
     align-content: space-between;
+    justify-content: space-evenly;
     align-items: flex-start;
     gap: 4rem 2rem;
     padding: 4rem 0rem;
@@ -123,12 +147,13 @@
 }
 
 .cast {
-    margin-top: auto;
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
 }
 
 .externalLinksWrapper{
     display: flex;
+    margin: 1rem 0;
     height: 40px;
     justify-content:left;
 }
+

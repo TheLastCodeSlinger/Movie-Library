@@ -73,47 +73,48 @@ const MovieDetails = ({ movieDetails, setMovieDetails }) => {
   }
 
   return (
-    <LazyLoad offset={200} height={200}>
+    <>
       {movieDetails && (
-        <div className="movieDetailsWrapper">
-          <p>movieDetail-container</p>
-          <div className="movieDetail-informations">
-            <div className="movieDetail-posterImage">
-              <img
-                src={`https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`}
-                alt={`${movieDetails.title}`}
-              />
-            </div>
-            <div className="movieDetail-infoWrapper">
-              <div className="movieDetail-title">{movieDetails.title}</div>
-              <div className="movieDetail-tagline">{movieDetails.tagline}</div>
-              <div className="movieDetail-rating-stats-wrapper">
-                <div className="movieDetail-rating">
-                  RATING: {movieDetails.vote_average}
+        <div className="wrapper">
+          <LazyLoad offset={200} height={200}>
+            <div className="movieDetail-wrapper">
+              <div className="movieDetail-posterImageWrapper">
+                <img
+                  src={`https://image.tmdb.org/t/p/w780/${movieDetails.poster_path}`}
+                  alt={`${movieDetails.title}`}
+                />
+              </div>
+              <div className="movieDetail-infoWrapper">
+                <div className="movieDetail-title">{movieDetails.title}</div>
+                <div className="movieDetail-tagline">
+                  {movieDetails.tagline}
                 </div>
-                <div className="movieDetailstats">
-                  {movieDetails.original_language} /{" "}
-                  {movieDetails.runtime + "MIN"} /{" "}
-                  {movieDetails.release_date.slice(0, 4)}
+                <div className="movieDetail-rating-stats-wrapper">
+                  <div className="movieDetail-rating">
+                    RATING: {movieDetails.vote_average}
+                  </div>
+                  <div className="movieDetailstats">
+                    {movieDetails.original_language} /{" "}
+                    {movieDetails.runtime + "MIN"} /{" "}
+                    {movieDetails.release_date.slice(0, 4)}
+                  </div>
                 </div>
-              </div>
-              <h3>GENRES:</h3>
-              <div className="movieDetails-genrelist">
-                {movieIncludesGenres}
-              </div>
-              <h3>OVERVIEW:</h3>
-              <div className="movieDetails-plot">{movieDetails.overview}</div>
-              <div className="externalLinksWrapper">
-                {trailer && <Trailer url={trailer} />}
-                <Imdb url={movieDetails.id} />
-                <ExternalHomePage url={movieDetails.homepage} />
-              </div>
-              <div className="cast">
-                <h3>THE CAST:</h3>
-                {cast && <Cast cast={cast} />}
+                <h3>GENRES:</h3>
+                <div className="movieDetails-genrelist">
+                  {movieIncludesGenres}
+                </div>
+                <h3>OVERVIEW:</h3>
+                <div className="movieDetails-plot">{movieDetails.overview}</div>
+                <div className="externalLinksWrapper">
+                  {trailer && <Trailer url={trailer} />}
+                  <Imdb url={movieDetails.id} />
+                  <ExternalHomePage url={movieDetails.homepage} />
+                </div>
+                  <h3>THE CAST:</h3>
+                  {cast && <Cast  cast={cast} />}
               </div>
             </div>
-          </div>
+          </LazyLoad>
           <h2 className="movieDetails-title">RECOMMENDATION</h2>
           <div className="recommendationWrapper">
             {recommendedMovies
@@ -130,7 +131,8 @@ const MovieDetails = ({ movieDetails, setMovieDetails }) => {
           </div>
         </div>
       )}
-    </LazyLoad>
+    </>
   );
 };
+
 export default MovieDetails;

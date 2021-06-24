@@ -1,10 +1,11 @@
-import { Fragment } from "react";
 
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+//import "slick-carousel/slick/slick.css"; 
+//import "slick-carousel/slick/slick-theme.css";
 
 import CastItem from "./CastItem";
+import "./Css/CastItem.css"
+import "./Css/App.scss"
 
 const Cast = (cast) => {
   //Map all Cast-Members-Profilepicture into the slide
@@ -18,14 +19,14 @@ const Cast = (cast) => {
     autoplaySpeed: 2000,
     infinite: true,
     speed: 500,
-    slidesToShow: 9,
+    slidesToShow: 6,
     slidesToScroll: 1,
   };
-
+// Slider needs container-wrap, to set width & overflow, else the Slider doesn't work properly. Without, it won't resize.
   return (
-    <Fragment>
+    <div className="container-wrap">
       <Slider {...settings}>{items}</Slider>
-    </Fragment>
+    </div>
   );
 };
 
