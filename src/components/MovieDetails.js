@@ -6,6 +6,7 @@ import "./Css/MovieDetails.css";
 import "../containers/Css/SidebarItems.css";
 import { MdPlayArrow } from "react-icons/md";
 
+import { animateScroll as scroll } from "react-scroll";
 import tmdbAPI from "../API/tmdbAPI";
 import MovieItem from "./MovieItem";
 import Cast from "./Cast";
@@ -27,6 +28,11 @@ const MovieDetails = ({ movieDetails, setMovieDetails }) => {
       setMovieDetails(result.data);
     };
     fetchAllMovieDetails();
+    scroll.scrollToTop({
+      smooth: true,
+      duration: 600,
+      offSet: 100,
+    });
     console.log(movieDetails);
   }, [movieId]);
 
