@@ -1,159 +1,158 @@
 .wrapper {
-    width:100%;
-    padding: 5rem 3rem;
-    flex-direction: column;
-    display: flex;
+  width: 100%;
+  padding: 5rem 3rem;
+  flex-direction: column;
+  display: flex;
 }
 
 .movieDetail-wrapper {
-    display: flex;
-    margin: 0 auto;
-    margin-bottom: 6rem;
-    width: 100%;
-    max-width: 120rem;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  margin: 0 auto;
+  margin-bottom: 6rem;
+  width: 100%;
+  max-width: 120rem;
+  align-items: center;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 920px) {
-    .movieDetail-wrapper {
-      flex-direction: column;
-    }
+  .movieDetail-wrapper {
+    flex-direction: column;
   }
+}
 
 .movieDetail-posterImageWrapper {
-    width: 100%;
-    max-width: 40%;
-    align-items: center;
-    display: flex;
-    flex: 1 1 40%;
-    justify-content: center;
+  width: 100%;
+  max-width: 40%;
+  align-items: center;
+  display: flex;
+  flex: 1 1 40%;
+  justify-content: center;
 }
 
 @media only screen and (max-width: 920px) {
-    .movieDetail-posterImageWrapper {
-      max-width: 60%;
-      flex: 1 1 60%;
-    }
+  .movieDetail-posterImageWrapper {
+    max-width: 60%;
+    flex: 1 1 60%;
   }
+}
 
 .movieDetail-posterImageWrapper img {
-    border-radius: 12px;
-    height: auto;
-    object-fit: cover;
-    max-width: 100%;
-    max-height: 100%;
+  border-radius: 12px;
+  height: auto;
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  box-shadow: 0rem 3rem 8rem rgba(155, 140, 140, 0.944);
 }
 
 .movieDetail-infoWrapper {
-    padding: 4rem;
-    max-width: 60%;
-    width: 100%;    
-    flex: 1 1 60%;
-
+  padding: 4rem;
+  max-width: 60%;
+  width: 100%;
+  flex: 1 1 60%;
 }
 
 @media only screen and (max-width: 920px) {
-    .movieDetail-infoWrapper {
-        max-width: 100%;
-        flex: 1 1 100%;
-    }
+  .movieDetail-infoWrapper {
+    max-width: 100%;
+    flex: 1 1 100%;
   }
-
-.movieDetail-informations h3 {
-    font-weight: 700;
-    font-size: 1.5rem;
-    letter-spacing: 1px;
-    margin-bottom: 0.9rem;
 }
 
-.header{
-    color: rgb(75, 97, 104);
-    font-size: 3rem;
-    font-weight: 700;
-    text-transform: uppercase;
+.movieDetail-informations h3 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.9rem;
+}
+
+.header {
+  color: rgb(75, 97, 104);
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .movieDetail-tagline {
-    font-size: 2rem;
-    font-weight: 400;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
 }
 
 .movieDetail-rating-stats-wrapper {
-    display: flex;
-    font-size: 1.5rem;
-    margin-bottom: 2.5rem;
-    justify-content: space-between;
+  display: flex;
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+  justify-content: space-between;
 }
 
 .movieDetail-stats {
-    letter-spacing: 1px;
-    text-transform: uppercase;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .movieDetail-rating {
-    letter-spacing: 1px;
-    font-weight: 700;
+  letter-spacing: 1px;
+  font-weight: 700;
 }
 
 .movieDetails-genrelist {
-    font-size: 1.5rem;
-    font-weight: 400;
-    text-transform:capitalize;
-    margin: 1rem;
-    display: flex;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin: 1rem;
+  display: flex;
 }
 
 .movieDetails-plot {
-    font-size: 1.7rem;
-    line-height: 1.5;
-    margin-bottom: 3rem;
-    font-weight: 500;
-    color: rgb(75, 97, 104);}
+  font-size: 1.7rem;
+  line-height: 1.5;
+  margin-bottom: 3rem;
+  font-weight: 500;
+  color: rgb(75, 97, 104);
+}
 
 .recommendationWrapper {
-    display: grid;
-    min-height: 100vh;
-    grid-template-columns: repeat(auto-fit, minmax(10rem, 25rem));
-    align-content: space-between;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    gap: 4rem 2rem;
-    padding: 4rem 0rem;
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 25rem));
+  align-content: space-between;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 4rem 2rem;
+  padding: 4rem 0rem;
 }
 
-@media only screen and (max-width: 1366px){
-    .recommendationWrapper {
-        grid-template-columns: repeat(auto-fit, minmax(10rem, 23rem));
-        justify-content: space-around;
-        gap: 4rem 1.5rem;
-    }
+@media only screen and (max-width: 1366px) {
+  .recommendationWrapper {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 23rem));
+    justify-content: space-around;
+    gap: 4rem 1.5rem;
+  }
 }
 
-@media only screen and (max-width: 1366px){
-    .recommendationWrapper {
-        grid-template-columns: repeat(auto-fit, minmax(10rem, 19rem));
-        gap: 4rem 1rem;
-    }
+@media only screen and (max-width: 1366px) {
+  .recommendationWrapper {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 19rem));
+    gap: 4rem 1rem;
+  }
 }
 
 .movieDetail-genreTagWrapper {
-    display: grid;
-    grid-template-columns: 1.5rem 1fr;
-    margin-right: 1rem;
-
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  margin-right: 1rem;
 }
 
 .cast {
-    margin-bottom: 5rem;
+  margin-bottom: 5rem;
 }
 
-.externalLinksWrapper{
-    display: flex;
-    margin: 1rem 0;
-    height: 40px;
-    justify-content:left;
+.externalLinksWrapper {
+  display: flex;
+  margin: 1rem 0;
+  height: 40px;
+  justify-content: left;
 }
-

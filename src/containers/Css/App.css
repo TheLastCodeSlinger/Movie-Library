@@ -14,3 +14,10 @@
     grid-template-columns: 20rem 1fr;
   }
 }
+
+.searchbarWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2rem;
+}

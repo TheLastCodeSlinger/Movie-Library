@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import { MdPlayArrow } from "react-icons/md";
 import "./Css/SidebarItems.css";
@@ -7,8 +7,9 @@ import "./Css/SidebarItems.css";
 export const SidebarRenderLinksDiscovery = () => {
   return (
     <Fragment>
-      <Link
+      <NavLink
         className="sidebarItem"
+        activeClassName="activeLinkStyle"
         to={{
           pathname: `/Discover/Popular`,
           state: { id: `popular`, page: 1 },
@@ -18,9 +19,10 @@ export const SidebarRenderLinksDiscovery = () => {
           <MdPlayArrow />
         </div>
         <div className="sidebarGenreTag">Popular</div>
-      </Link>
-      <Link
+      </NavLink>
+      <NavLink
         className="sidebarItem"
+        activeClassName="activeLinkStyle"
         to={{
           pathname: `/Discover/Top_Rated`,
           state: { id: `top_rated` },
@@ -30,9 +32,10 @@ export const SidebarRenderLinksDiscovery = () => {
           <MdPlayArrow />
         </div>
         <div className="sidebarGenreTag">Top Rated</div>
-      </Link>
-      <Link
+      </NavLink>
+      <NavLink
         className="sidebarItem"
+        activeClassName="activeLinkStyle"
         to={{
           pathname: `/Discover/Upcoming`,
           state: { id: `upcoming` },
@@ -42,14 +45,14 @@ export const SidebarRenderLinksDiscovery = () => {
           <MdPlayArrow />
         </div>
         <div className="sidebarGenreTag">Upcoming</div>
-      </Link>
+      </NavLink>
     </Fragment>
   );
 };
 
 export const SidebarRenderLinksGenre = (genre) => {
   return (
-    <Link
+    <NavLink
       className="sidebarItem"
       to={{
         //Save genre-id in state. Id can be globally accessed with "const location= useLocation & const {id} = location.?id"
@@ -59,11 +62,12 @@ export const SidebarRenderLinksGenre = (genre) => {
         },
       }}
       key={genre.genre.id}
+      activeClassName="activeLinkStyle"
     >
       <div className="sidebarIcon">
         <MdPlayArrow />
       </div>
       <div className="sidebarGenreTag">{genre.genre.name}</div>
-    </Link>
+    </NavLink>
   );
 };

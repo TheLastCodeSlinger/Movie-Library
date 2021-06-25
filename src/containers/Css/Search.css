@@ -1,0 +1,21 @@
+.titlee {
+  font-size: 2.2rem;
+  height: 3rem;
+  text-decoration: underline;
+  color: rgb(3, 32, 3);
+}
+.searchMoviesWrapper {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 25rem));
+  justify-content: space-evenly;
+  align-content: space-between;
+  align-items: flex-start;
+  gap: 4rem 2rem;
+  padding: 4rem 0rem;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}

@@ -11,13 +11,14 @@ import tmdbAPI from "../API/tmdbAPI";
 import MovieItem from "./MovieItem";
 import Cast from "./Cast";
 import { ExternalHomePage, Imdb, Trailer } from "./ExternalLinks";
-import Rating from './Rating'
+import Rating from "./Rating";
+import Nothing from "../Assets/Nothing.svg";
 
 const MovieDetails = ({ movieDetails, setMovieDetails }) => {
   const match = useRouteMatch();
+  const movieId = match.params.movieId;
   const [cast, setCast] = useState();
   const [recommendedMovies, setRecommendedMovies] = useState();
-  const movieId = match.params.movieId;
   const [trailer, setTrailer] = useState(null);
 
   useEffect(() => {
@@ -89,6 +90,10 @@ const MovieDetails = ({ movieDetails, setMovieDetails }) => {
                 <img
                   src={`https://image.tmdb.org/t/p/w780/${movieDetails.poster_path}`}
                   alt={`${movieDetails.title}`}
+                  onError={(e) => {
+                    e.target.src = `${Nothing}`;
+                    e.target.onError = null;
+                  }}
                 />
               </div>
               <div className="movieDetail-infoWrapper">
@@ -98,7 +103,7 @@ const MovieDetails = ({ movieDetails, setMovieDetails }) => {
                 </div>
                 <div className="movieDetail-rating-stats-wrapper">
                   <div className="movieDetail-rating">
-                    RATING: <Rating number={movieDetails.vote_average/2} />
+                    RATING: <Rating number={movieDetails.vote_average / 2} />
                   </div>
                   <div className="movieDetail-stats">
                     {movieDetails.original_language} /{" "}
@@ -117,8 +122,8 @@ const MovieDetails = ({ movieDetails, setMovieDetails }) => {
                   <Imdb url={movieDetails.id} />
                   <ExternalHomePage url={movieDetails.homepage} />
                 </div>
-                  <h3>THE CAST:</h3>
-                  {cast && <Cast  cast={cast} />}
+                <h3>THE CAST:</h3>
+                {cast && <Cast cast={cast} />}
               </div>
             </div>
           </LazyLoad>

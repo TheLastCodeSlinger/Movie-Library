@@ -11,7 +11,17 @@ const NextPageButton = ({ setMovies, setPage, page, genreId, genreName }) => {
   let params = {};
 
   //Genres have a Number as Id(2,22,322) whereas Discover has a String-Id (Popular/Top_rated)
-  if (isNaN(genreId)) {
+  if (genreId === "query") {
+    navigateToNextPage = `/search/movie`;
+    changeUrlToNextPage = `/search/${genreName}/page=${page + 1}`;
+    params = {
+      params: {
+        language: "en-US",
+        page: page + 1,
+        query: genreName,
+      },
+    };
+  } else if (isNaN(genreId)) {
     changeUrlToNextPage = `/Discover/${genreName}?page=${page + 1}`;
     navigateToNextPage = `/movie/${genreId}`;
     params = {

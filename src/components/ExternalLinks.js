@@ -42,7 +42,7 @@ export const ExternalHomePage = (url) => {
   return (
     <Fragment>
       {url.url ? (
-        <a className="link" href={url.url} target="_blank">
+        <a className="link" href={url.url} target="_blank" rel="noreferrer">
           HOMEPAGE
         </a>
       ) : null}
@@ -58,6 +58,7 @@ export const Imdb = (url) => {
           className="link"
           href={`https://www.themoviedb.org/movie/${url.url}`}
           target="_blank"
+          rel="noreferrer"
         >
           IMDB
         </a>

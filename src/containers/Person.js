@@ -49,6 +49,7 @@ const Person = () => {
               <img
                 className="personImg"
                 src={`https://image.tmdb.org/t/p/w780/${personData.profile_path}`}
+                alt={personData.name}
               />
             ) : (
               <Avatar />
@@ -61,11 +62,18 @@ const Person = () => {
             {personData.biography ? (
               <div className="personBiography">{personData.biography}</div>
             ) : (
-              <p className="personBiography">There is no biography available...</p>
+              <p className="personBiography">
+                There is no biography available...
+              </p>
             )}
             <div className="personExternalLinks">
               {personData.homepage ? (
-                <a className="link" href={personData.homepage} target="_blank">
+                <a
+                  className="link"
+                  href={personData.homepage}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   HOMEPAGE
                 </a>
               ) : null}
@@ -74,6 +82,7 @@ const Person = () => {
                   className="link"
                   href={`https://www.themoviedb.org/person/${personData.id}`}
                   target="_blank"
+                  rel="noreferrer"
                 >
                   IMDB
                 </a>

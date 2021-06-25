@@ -4,6 +4,7 @@ import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import "./Css/App.css";
 
 import Sidebar from "./Sidebar";
+import SearchBar from "../components/Searchbar";
 
 import tmdbAPI from "../API/tmdbAPI";
 import Home from "./Home";
@@ -12,6 +13,7 @@ import RenderGenre from "./Genre";
 import MovieDetails from "../components/MovieDetails";
 import history from "../history";
 import Person from "./Person";
+import Search from "./Search";
 
 function App() {
   const [movies, setMovies] = useState();
@@ -56,6 +58,9 @@ function App() {
   return (
     <Router history={history}>
       <div className="container">
+        <div className="searchbarWrapper">
+          <SearchBar />
+        </div>
         <Sidebar setGenreId={setGenreId} page={page} genre={genre} />
 
         <Switch>
@@ -107,6 +112,18 @@ function App() {
 
           <Route path="/Person/:personId">
             <Person />
+          </Route>
+
+          <Route path="/search/:query">
+            <Search
+              setMovies={setMovies}
+              movies={movies}
+              page={page}
+              setPage={setPage}
+              setGenreName={setGenreName}
+              setGenreId={setGenreId}
+              genreName
+            />
           </Route>
 
           <Route path="*">

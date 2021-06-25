@@ -17,8 +17,18 @@ const PreviousPageButton = ({
   let params;
 
   //Genres have a Number as Id(2,22,322) whereas Discover has a String-Id (Popular/Top_rated)
-  if (isNaN(genreId)) {
-    navigateToPreviousPage = `/movie/${genreId}}`;
+  if (genreId === "query") {
+    navigateToPreviousPage = `/search/movie`;
+    changeUrlToPreviousPage = `/search/${genreName}/page=${page - 1}`;
+    params = {
+      params: {
+        language: "en-US",
+        page: page - 1,
+        query: genreName,
+      },
+    };
+  } else if (isNaN(genreId)) {
+    navigateToPreviousPage = `/movie/${genreId}`;
     changeUrlToPreviousPage = `/Discover/${genreName}?page=${page - 1}`;
     params = {
       params: {

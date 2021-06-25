@@ -6,9 +6,11 @@ import "./Css/MovieItems.css";
 import Loader from "react-loader-spinner";
 import Rating from "./Rating";
 
+import Nothing from "../Assets/Nothing.svg";
+
 const MovieItem = (movie) => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  //const [error, setError] = useState(false);
 
   useEffect(() => {
     return () => setLoading(false);
@@ -33,21 +35,17 @@ const MovieItem = (movie) => {
           onLoad={() => setLoading(true)}
           //If display: none, the spinner will be displayed
           style={!loading ? { display: "none" } : {}}
-          error={error ? true : false}
           onError={(e) => {
-            setError(true);
-            if (e.target.src !== "hello") {
-              e.target.src = null;
-            }
+            e.target.src = `${Nothing}`;
+            e.target.onError = null;
           }}
         />
         <div
           className="movieItemTitle"
-          style={!loading ? { display: "none" } : {} }
+          style={!loading ? { display: "none" } : {}}
         >
           {movie.title}
           <Rating number={movie.movie.vote_average / 2} />
-          
         </div>
       </Link>
     </LazyLoad>
