@@ -1,4 +1,4 @@
-import { useEffect, Fragment } from "react";
+import { useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
 import tmdbAPI from "../API/tmdbAPI";
 import MovieItem from "../components/MovieItem";

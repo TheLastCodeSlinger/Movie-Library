@@ -3,6 +3,8 @@
   height: 3rem;
   text-decoration: underline;
   color: rgb(3, 32, 3);
+  margin-top: 4rem;
+  margin-left: 2rem;
 }
 .searchMoviesWrapper {
   display: grid;

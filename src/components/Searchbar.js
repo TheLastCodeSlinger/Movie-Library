@@ -1,6 +1,9 @@
 import React, { useState, useRef } from "react";
 import { useHistory } from "react-router-dom";
 
+import "./Css/Searchbar.css"
+import SearchSvg from '../Assets/Search.svg'
+
 const SearchBar = () => {
   const [input, setInput] = useState("");
   const node = useRef();
@@ -18,7 +21,7 @@ const SearchBar = () => {
 
   return (
     <form
-      className="form"
+      className="formy"
       onClick={() => {
         inputFocus.current.focus();
       }}
@@ -26,10 +29,10 @@ const SearchBar = () => {
       ref={node}
     >
       <button type="submit" className="buttton">
-        XXX
+        <img src={`${SearchSvg}`} alt="SearchButton" />
       </button>
       <input
-        className="input"
+        className="inputt"
         onChange={(e) => setInput(e.target.value)}
         ref={inputFocus}
         value={input}

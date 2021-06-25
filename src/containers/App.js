@@ -61,6 +61,9 @@ function App() {
         <div className="searchbarWrapper">
           <SearchBar />
         </div>
+          
+        
+        
         <Sidebar setGenreId={setGenreId} page={page} genre={genre} />
 
         <Switch>

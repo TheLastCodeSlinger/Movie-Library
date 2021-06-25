@@ -1,11 +1,10 @@
-.form {
-    position: relative;
+.formy {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 8px gray;
-  background-color: gray;
-  border: 1px solid green;
+  border: 1px solid rgb(6, 37, 6);
   width: 30rem;
   cursor: pointer;
   padding: 2rem;
@@ -14,23 +13,30 @@
   border-radius: 10rem;
 }
 
+@media only screen and (max-width: 950px) {
+    .formy {
+        width: 15rem;
+        padding: 1.3rem
+    }
+}
+
 .buttton {
-    line-height: 1;
+  line-height: 1;
   cursor: pointer;
   background-color: transparent;
   border: none;
   outline: none;
-  color: yellow;
+  color: rgb(168, 78, 78);
 }
 
-.input {
-    font-size: 14px;
-    line-height: 1;
-    font-weight: 300;
-    background-color: transparent;
-    width: 100%;
-    margin-left: 1rem;
-    color: pink;
-    border: none;
-    transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+.inputt {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 300;
+  background-color: transparent;
+  width: 100%;
+  margin-left: 1rem;
+  color: rgb(10, 4, 4);
+  border: none;
+  transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
