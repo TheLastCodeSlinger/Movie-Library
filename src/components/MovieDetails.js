@@ -92,7 +92,7 @@ const MovieDetails = ({ movieDetails, setMovieDetails }) => {
                 />
               </div>
               <div className="movieDetail-infoWrapper">
-                <div className="movieDetail-title">{movieDetails.title}</div>
+                <div className="header">{movieDetails.title}</div>
                 <div className="movieDetail-tagline">
                   {movieDetails.tagline}
                 </div>
@@ -122,7 +122,7 @@ const MovieDetails = ({ movieDetails, setMovieDetails }) => {
               </div>
             </div>
           </LazyLoad>
-          <h2 className="movieDetails-title">RECOMMENDATION</h2>
+          <h2 className="header">RECOMMENDATION</h2>
           <div className="recommendationWrapper">
             {recommendedMovies
               ? recommendedMovies.results.map((movie) => (
