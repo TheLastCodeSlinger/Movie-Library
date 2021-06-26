@@ -14,6 +14,7 @@ import MovieDetails from "../components/MovieDetails";
 import history from "../history";
 import Person from "./Person";
 import Search from "./Search";
+import MobileSidebar from "../components/MobileSidebar";
 
 function App() {
   const [movies, setMovies] = useState();
@@ -56,21 +57,18 @@ function App() {
     fetchGenreCateforiesData();
   }, []);
 
-    // Set amount of items to show on slider based on the width of the element
-    const changeMobile = () => {
-      
-      window.matchMedia('(max-width: 80em)').matches
+  // Set amount of items to show on slider based on the width of the element
+  const changeMobile = () => {
+    window.matchMedia("(max-width: 1000px)").matches
       ? setisMobile(true)
       : setisMobile(false);
-    };
-    
-    useEffect(() => {
-      changeMobile();
-      window.addEventListener('resize', changeMobile);
-      return () => window.removeEventListener('resize', changeMobile);
-    }, []);
+  };
 
-
+  useEffect(() => {
+    changeMobile();
+    window.addEventListener("resize", changeMobile);
+    return () => window.removeEventListener("resize", changeMobile);
+  }, []);
 
   return (
     <Router history={history}>
@@ -78,8 +76,8 @@ function App() {
         <div className="searchbarWrapper">
           <SearchBar />
         </div>
-        {isMobile ? console.log( "heallo") : console.log("NOPE")}
-        <Sidebar setGenreId={setGenreId} page={page} genre={genre} />
+        {!isMobile ? <Sidebar  genre={genre} /> : <MobileSidebar genre={genre} />}
+        {console.log(isMobile)}
 
         <Switch>
           <Route path="/" exact>

@@ -7,7 +7,7 @@ import {
   SidebarRenderLinksGenre,
 } from "./SidebarItems";
 
-const Sidebar = ({ setGenreId, page, genre }) => {
+const Sidebar = ({ genre }) => {
   return (
     <div className="sidebarWrapper">
       <Logo />
@@ -15,16 +15,14 @@ const Sidebar = ({ setGenreId, page, genre }) => {
       <div className="sidebarItemsWrapper">
         <h2>DISCOVER</h2>
         {genre && (
-          <SidebarRenderLinksDiscovery page={page} setGenreId={setGenreId} />
+          <SidebarRenderLinksDiscovery />
         )}
         <h2>GENRE</h2>
         {genre &&
           genre.genres.map((genre) => (
             <SidebarRenderLinksGenre
-              page={page}
               genre={genre}
               key={genre.id}
-              setGenreId={setGenreId}
             />
           ))}
         ;

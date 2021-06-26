@@ -20,8 +20,10 @@ const RenderGenre = ({
   const location = useLocation();
   const id = location.state?.id;
   const { genName } = useParams();
-  const [option, setOption] = useState({value: "popularity.desc", label: "Popularity"});
-
+  const [option, setOption] = useState({
+    value: "popularity.desc",
+    label: "Popularity",
+  });
 
   //Fetch the Genre-List > setMovies to this List > Rerender & Display Genre-Page1
   useEffect(() => {
@@ -50,7 +52,7 @@ const RenderGenre = ({
     }
   }, [id, page, option.value, setMovies, setGenreName, setGenreId, setPage]);
 
-  if(window.innerWidth < 900){
+  if (window.innerWidth < 900) {
     console.log("I DID IT");
   }
   return (

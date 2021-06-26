@@ -107,3 +107,8 @@
         gap: 4rem 1rem;
     }
 }
+@media only screen and (max-width: 999px) {
+    .personCreditMoviesWrapper {
+      margin-left: 35px;
+    }
+  }

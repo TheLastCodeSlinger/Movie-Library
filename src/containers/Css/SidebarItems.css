@@ -1,53 +1,58 @@
 .sidebarItemsWrapper {
-    display: block;
-    position:sticky;
-    top: -100rem;    
-    letter-spacing: 0.2rem;
+  display: block;
+  position: sticky;
+  top: -100rem;
+  letter-spacing: 0.2rem;
 }
 
 .sidebarItemsWrapper h2 {
-    background-color: rgba(171, 191, 209, 0.623);
-    padding: 2rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    font-size: 2rem;
-
+  background-color: rgba(171, 191, 209, 0.623);
+  padding: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 2rem;
 }
 
 .sidebarItem {
-    font-size: 1.5rem;
-    margin-bottom: 0.8rem;
-    border-radius: 22px;
-    background-color: rgba(216, 220, 224, 0.274);
-    padding: 0.6rem 1rem;
-    margin: 1rem 1.5rem;;
-    display: grid;
-    grid-template-columns: 2rem 1fr;
-    border: 1px solid rgba(128, 128, 128, 0.459);
-    text-decoration: none;
-    color: black;
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  border-radius: 22px;
+  background-color: rgba(216, 220, 224, 0.274);
+  padding: 0.6rem 1rem;
+  margin: 1rem 1.5rem;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  border: 1px solid rgba(128, 128, 128, 0.459);
+  text-decoration: none;
+  color: black;
 }
 
-.sidebarItem:hover{
-    background-color: rgba(126, 115, 115, 0.692);
-    border: 1px solid rgba(22, 21, 21, 0.959);
-    color: white;
+.sidebarItem:hover {
+  background-color: rgba(126, 115, 115, 0.692);
+  border: 1px solid rgba(22, 21, 21, 0.959);
+  color: white;
 }
 
 .activeLinkStyle {
-    background-color: rgba(126, 115, 115, 0.692);
-    border: 1px solid rgba(22, 21, 21, 0.959);
-    color: white;
+  background-color: rgba(126, 115, 115, 0.692);
+  border: 1px solid rgba(22, 21, 21, 0.959);
+  color: white;
 }
 
 .sidebarIcon {
-    background-color: transparent;
-    display: flex;
-    align-self: center;
-    justify-self: center;
+  background-color: transparent;
+  display: flex;
+  align-self: center;
+  justify-self: center;
 }
 
 .sidebarGenreTag {
-    background-color: transparent;
+  background-color: transparent;
 }
 
+@media only screen and (max-width: 999px) {
+  .sidebarItem {
+    font-size: 1.2rem;
+    margin: 0.3rem;
+  }
+}

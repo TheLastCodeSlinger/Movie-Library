@@ -4,15 +4,16 @@ import { NavLink } from "react-router-dom";
 import { MdPlayArrow } from "react-icons/md";
 import "./Css/SidebarItems.css";
 
-export const SidebarRenderLinksDiscovery = () => {
+export const SidebarRenderLinksDiscovery = ({ openSidebarHandler }) => {
   return (
     <Fragment>
       <NavLink
+        onClick={openSidebarHandler}
         className="sidebarItem"
         activeClassName="activeLinkStyle"
         to={{
           pathname: `/Discover/Popular`,
-          state: { id: `popular`, page: 1 },
+          state: { id: `popular` },
         }}
       >
         <div className="sidebarIcon">
@@ -21,6 +22,7 @@ export const SidebarRenderLinksDiscovery = () => {
         <div className="sidebarGenreTag">Popular</div>
       </NavLink>
       <NavLink
+        onClick={openSidebarHandler}
         className="sidebarItem"
         activeClassName="activeLinkStyle"
         to={{
@@ -34,6 +36,7 @@ export const SidebarRenderLinksDiscovery = () => {
         <div className="sidebarGenreTag">Top Rated</div>
       </NavLink>
       <NavLink
+        onClick={openSidebarHandler}
         className="sidebarItem"
         activeClassName="activeLinkStyle"
         to={{
@@ -53,6 +56,7 @@ export const SidebarRenderLinksDiscovery = () => {
 export const SidebarRenderLinksGenre = (genre) => {
   return (
     <NavLink
+      onClick={console.log("genre")}
       className="sidebarItem"
       to={{
         //Save genre-id in state. Id can be globally accessed with "const location= useLocation & const {id} = location.?id"
