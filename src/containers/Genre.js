@@ -50,6 +50,9 @@ const RenderGenre = ({
     }
   }, [id, page, option.value, setMovies, setGenreName, setGenreId, setPage]);
 
+  if(window.innerWidth < 900){
+    console.log("I DID IT");
+  }
   return (
     <div style={{ display: "flex", width: "100%", flexDirection: "column" }}>
       <SortBy option={option} setOption={setOption} />

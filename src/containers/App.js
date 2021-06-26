@@ -22,6 +22,7 @@ function App() {
   const [genreName, setGenreName] = useState();
   const [genre, setGenre] = useState(0);
   const [movieDetails, setMovieDetails] = useState();
+  const [isMobile, setisMobile] = useState(null);
 
   //Loading the movies for the landing/first page and setting states
   useEffect(() => {
@@ -55,13 +56,29 @@ function App() {
     fetchGenreCateforiesData();
   }, []);
 
+    // Set amount of items to show on slider based on the width of the element
+    const changeMobile = () => {
+      
+      window.matchMedia('(max-width: 80em)').matches
+      ? setisMobile(true)
+      : setisMobile(false);
+    };
+    
+    useEffect(() => {
+      changeMobile();
+      window.addEventListener('resize', changeMobile);
+      return () => window.removeEventListener('resize', changeMobile);
+    }, []);
+
+
+
   return (
     <Router history={history}>
       <div className="container">
         <div className="searchbarWrapper">
           <SearchBar />
         </div>
-
+        {isMobile ? console.log( "heallo") : console.log("NOPE")}
         <Sidebar setGenreId={setGenreId} page={page} genre={genre} />
 
         <Switch>
