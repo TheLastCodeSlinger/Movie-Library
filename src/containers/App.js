@@ -61,9 +61,7 @@ function App() {
         <div className="searchbarWrapper">
           <SearchBar />
         </div>
-          
-        
-        
+
         <Sidebar setGenreId={setGenreId} page={page} genre={genre} />
 
         <Switch>
@@ -125,7 +123,6 @@ function App() {
               setPage={setPage}
               setGenreName={setGenreName}
               setGenreId={setGenreId}
-              genreName
             />
           </Route>
 

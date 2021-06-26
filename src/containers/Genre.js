@@ -1,9 +1,10 @@
 import { useLocation, useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { animateScroll as scroll } from "react-scroll";
 
 import tmdbAPI from "../API/tmdbAPI";
 import Content from "../components/Content";
+import SortBy from "../components/Sortby";
 
 const RenderGenre = ({
   setMovies,
@@ -18,10 +19,9 @@ const RenderGenre = ({
   //Get Genre-Id from clicked <Link/>
   const location = useLocation();
   const id = location.state?.id;
-  //Genname = action/drama/animation etc.
   const { genName } = useParams();
+  const [option, setOption] = useState({value: "popularity.desc", label: "Popularity"});
 
-  //const match = useRouteMatch("/Genre/:discName/Page=:id")
 
   //Fetch the Genre-List > setMovies to this List > Rerender & Display Genre-Page1
   useEffect(() => {
@@ -31,13 +31,14 @@ const RenderGenre = ({
           language: "en-US",
           page: page,
           with_genres: id,
+          sort_by: option.value,
         },
       });
       setMovies(result.data);
       setGenreId(id);
     };
     //check if still in same genre . Yes = nothing happens.
-    if (genreId !== id) {
+    if (genreId !== id || option.value) {
       fetchClickedCategoryData();
       setPage(1);
       setGenreName(genName);
@@ -47,18 +48,21 @@ const RenderGenre = ({
         offSet: 100,
       });
     }
-  }, [id, page]);
+  }, [id, page, option.value, setMovies, setGenreName, setGenreId, setPage]);
 
   return (
-    <Content
-      movies={movies}
-      setMovies={setMovies}
-      page={page}
-      setPage={setPage}
-      genreId={genreId}
-      setGenreId={setGenreId}
-      genreName={genreName}
-    />
+    <div style={{ display: "flex", width: "100%", flexDirection: "column" }}>
+      <SortBy option={option} setOption={setOption} />
+      <Content
+        movies={movies}
+        setMovies={setMovies}
+        page={page}
+        setPage={setPage}
+        genreId={genreId}
+        setGenreId={setGenreId}
+        genreName={genreName}
+      />
+    </div>
   );
 };
 

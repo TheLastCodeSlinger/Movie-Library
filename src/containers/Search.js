@@ -33,12 +33,12 @@ const Search = ({
     };
     console.log(genreName);
     fetchSearchMovies();
-    if (genreName == !match.params.query) {
+    if (genreName !== match.params.query) {
       setPage(1);
       setGenreName(match.params.query);
       setGenreId("query");
     }
-  }, [match.params.query, page, setGenreId]);
+  }, [match.params.query, page, setGenreId, setGenreName, setPage, setMovies]);
 
   return (
     <div className="wrapper">

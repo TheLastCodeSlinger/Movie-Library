@@ -34,8 +34,7 @@ const MovieDetails = ({ movieDetails, setMovieDetails }) => {
       duration: 600,
       offSet: 100,
     });
-    console.log(movieDetails);
-  }, [movieId]);
+  }, [movieId, setMovieDetails]);
 
   useEffect(() => {
     const fetchCastMemberData = async () => {
@@ -49,9 +48,12 @@ const MovieDetails = ({ movieDetails, setMovieDetails }) => {
 
   useEffect(() => {
     const fetchRecommendedMovies = async () => {
-      const result = await tmdbAPI.get(
-        `movie/${movieId}/recommendations?api_key=${process.env.REACT_APP_API}&language=en-US&page=1`
-      );
+      const result = await tmdbAPI.get(`movie/${movieId}/recommendations`, {
+        params: {
+          language: "en-US",
+          page: 1,
+        },
+      });
       setRecommendedMovies(result.data);
     };
     fetchRecommendedMovies();

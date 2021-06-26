@@ -25,7 +25,7 @@ const LandingPage = ({
       setPage(1);
     };
     fetchPopularPageOneData();
-  }, [genreId]);
+  }, [genreId, setMovies, setGenreId, setGenreName, setPage]);
 
   return (
     <Content
