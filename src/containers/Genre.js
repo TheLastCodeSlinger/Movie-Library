@@ -1,5 +1,5 @@
-import { useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 
 import tmdbAPI from "../API/tmdbAPI";

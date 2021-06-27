@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react";
-import { useRouteMatch } from "react-router";
-import LazyLoad from "react-lazyload";
-
 import "./Css/MovieDetails.css";
 import "../containers/Css/SidebarItems.css";
-import { MdPlayArrow } from "react-icons/md";
 
+import { useEffect, useState } from "react";
+import { MdPlayArrow } from "react-icons/md";
+import LazyLoad from "react-lazyload";
+import { useRouteMatch } from "react-router";
 import { animateScroll as scroll } from "react-scroll";
+
 import tmdbAPI from "../API/tmdbAPI";
-import MovieItem from "./MovieItem";
+import Nothing from "../Assets/Nothing.svg";
 import Cast from "./Cast";
 import { ExternalHomePage, Imdb, Trailer } from "./ExternalLinks";
+import MovieItem from "./MovieItem";
 import Rating from "./Rating";
-import Nothing from "../Assets/Nothing.svg";
 
 const MovieDetails = ({ movieDetails, setMovieDetails, isMobile }) => {
   const match = useRouteMatch();

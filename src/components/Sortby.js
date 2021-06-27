@@ -1,5 +1,6 @@
-import Select from "react-select";
 import "./Css/SortBy.css";
+
+import Select from "react-select";
 
 const options = [
   { value: "popularity.desc", label: "Popularity" },

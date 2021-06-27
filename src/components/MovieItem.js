@@ -1,12 +1,12 @@
+import "./Css/MovieItems.css";
+
 import { useEffect, useState } from "react";
 import LazyLoad from "react-lazyload";
+import Loader from "react-loader-spinner";
 import { Link } from "react-router-dom";
 
-import "./Css/MovieItems.css";
-import Loader from "react-loader-spinner";
-import Rating from "./Rating";
-
 import Nothing from "../Assets/Nothing.svg";
+import Rating from "./Rating";
 
 const MovieItem = (movie) => {
   const [loading, setLoading] = useState(false);

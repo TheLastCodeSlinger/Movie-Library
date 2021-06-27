@@ -1,8 +1,8 @@
 import "./Css/Content.css";
 
 import MovieItem from "./MovieItem";
-import NextPageButton from "./PageNavButtons/NextPageButton";
 import PreviousPageButton from "./PageNavButtons/LastPageButton";
+import NextPageButton from "./PageNavButtons/NextPageButton";
 
 const Content = ({ genreId, page, setMovies, setPage, genreName, movies }) => {
   return (

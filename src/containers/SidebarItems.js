@@ -1,8 +1,8 @@
-import { Fragment } from "react";
-import { NavLink } from "react-router-dom";
-
-import { MdPlayArrow } from "react-icons/md";
 import "./Css/SidebarItems.css";
+
+import { Fragment } from "react";
+import { MdPlayArrow } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 export const SidebarRenderLinksDiscovery = ({ openSidebarHandler }) => {
   return (

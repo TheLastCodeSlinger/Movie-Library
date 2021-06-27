@@ -1,9 +1,9 @@
-import { useLocation, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 
-import Content from "../components/Content";
 import tmdbAPI from "../API/tmdbAPI";
+import Content from "../components/Content";
 
 const RenderDiscover = ({
   setMovies,

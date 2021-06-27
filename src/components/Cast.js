@@ -1,8 +1,9 @@
+import "./Css/CastItem.css";
+import "./Css/App.scss";
+
 import Slider from "react-slick";
 
 import CastItem from "./CastItem";
-import "./Css/CastItem.css";
-import "./Css/App.scss";
 
 const Cast = (cast) => {
   //Map all Cast-Members-Profilepicture into the slide

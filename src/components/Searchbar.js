@@ -1,7 +1,8 @@
-import React, { useState, useRef } from "react";
+import "./Css/Searchbar.css"
+
+import React, { useRef,useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import "./Css/Searchbar.css"
 import SearchSvg from '../Assets/Search.svg'
 
 const SearchBar = () => {

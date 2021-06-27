@@ -1,6 +1,8 @@
 import "./Css/MobileSidebar.css";
+
+import { Fragment,useState } from "react";
+
 import MobileIconSvg from "../Assets/MobileIcon.svg";
-import { useState, Fragment } from "react";
 import Drawer from "./Drawer";
 
 const MobileSidebar = ({ genre }) => {

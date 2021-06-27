@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
-import { useRouteMatch } from "react-router";
-import tmdbAPI from "../API/tmdbAPI";
 import "./Css/Person.css";
 import "../components/Css/ExternalLinks.css";
-import MovieItem from "../components/MovieItem";
-import { Avatar } from "../components/Logo";
+
+import { useEffect, useState } from "react";
+import { useRouteMatch } from "react-router";
 import {animateScroll as scroll} from 'react-scroll'
+
+import tmdbAPI from "../API/tmdbAPI";
+import { Avatar } from "../components/Logo";
+import MovieItem from "../components/MovieItem";
 
 const Person = () => {
   const match = useRouteMatch();
@@ -96,7 +98,7 @@ const Person = () => {
           </div>
         </div>
       )}
-      <h2>Also enters in</h2>
+      <h2 className="header">Also enters in</h2>
       <div className="personCreditMoviesWrapper">
         {movieCredits
           ? movieCredits.cast.map((credit) => (

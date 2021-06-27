@@ -1,6 +1,8 @@
-import Stars from "react-rating";
-import { RatingIcon, FullRatingIcon } from "./Logo";
 import "./Css/MovieItems.css";
+
+import Stars from "react-rating";
+
+import { FullRatingIcon,RatingIcon } from "./Logo";
 
 const Rating = ({ number }) => {
   return (

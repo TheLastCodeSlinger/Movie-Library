@@ -1,7 +1,8 @@
-import { Fragment, useState } from "react";
 import "./Css/ExternalLinks.css";
-import ModalVideo from "react-modal-video";
 import "./Css/App.scss";
+
+import { Fragment, useState } from "react";
+import ModalVideo from "react-modal-video";
 
 //url contains information about external-sources (used in MovieDetails)
 

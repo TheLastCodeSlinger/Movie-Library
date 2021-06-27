@@ -1,7 +1,7 @@
+import "./Button.css";
+
 import { Link } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
-
-import "./Button.css";
 
 import tmdbAPI from "../../API/tmdbAPI";
 
