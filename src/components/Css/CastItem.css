@@ -8,7 +8,24 @@
 }
 
 .container-wrap {
-    max-width: 80vw;
+    max-width: 70vw;
     width: 100%;
     overflow: hidden;
 }
+
+.slick-prev {
+    left: 0 !important;
+    z-index: 1;
+  }
+  .slick-next {
+    right: 1% !important ;
+    z-index: 1;
+  }
+
+  .slick-list {
+      margin: 0 auto;
+      width: 95%;
+  }
+  .slick-slider{
+      padding-left: 2rem;
+  }

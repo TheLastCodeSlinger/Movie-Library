@@ -1,11 +1,8 @@
-
 import Slider from "react-slick";
-//import "slick-carousel/slick/slick.css"; 
-//import "slick-carousel/slick/slick-theme.css";
 
 import CastItem from "./CastItem";
-import "./Css/CastItem.css"
-import "./Css/App.scss"
+import "./Css/CastItem.css";
+import "./Css/App.scss";
 
 const Cast = (cast) => {
   //Map all Cast-Members-Profilepicture into the slide
@@ -14,8 +11,8 @@ const Cast = (cast) => {
   ));
 
   let changeDisplayedSlides = 9;
-  if(cast.isMobile){
-    changeDisplayedSlides = 5
+  if (cast.isMobile) {
+    changeDisplayedSlides = 5;
   }
 
   const settings = {
@@ -26,8 +23,10 @@ const Cast = (cast) => {
     speed: 500,
     slidesToShow: changeDisplayedSlides,
     slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
-// Slider needs container-wrap, to set width & overflow, else the Slider doesn't work properly. Without, it won't resize.
+  // Slider needs container-wrap, to set width & overflow, else the Slider doesn't work properly. Without, it won't resize.
   return (
     <div className="container-wrap">
       <Slider {...settings}>{items}</Slider>
@@ -36,3 +35,25 @@ const Cast = (cast) => {
 };
 
 export default Cast;
+
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "gray" }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "gray" }}
+      onClick={onClick}
+    />
+  );
+}
