@@ -5,6 +5,7 @@ import "./Css/Person.css";
 import "../components/Css/ExternalLinks.css";
 import MovieItem from "../components/MovieItem";
 import { Avatar } from "../components/Logo";
+import {animateScroll as scroll} from 'react-scroll'
 
 const Person = () => {
   const match = useRouteMatch();
@@ -20,7 +21,11 @@ const Person = () => {
         },
       });
       setPersonData(result.data);
-      console.log(result.data);
+      scroll.scrollToTop({
+        smooth: true,
+        duration: 600,
+        offSet: 100,
+      });
     };
     fetchPersonData();
   }, [match.params.personId]);
