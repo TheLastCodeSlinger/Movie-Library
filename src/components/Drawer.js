@@ -9,6 +9,7 @@ import {
   SidebarItemDiscovery,
   SidebarItemGenre,
 } from "../containers/SidebarItems";
+import { TmdbLogo } from "./IconsAsComponent";
 
 const useStyles = makeStyles({
   list: {
@@ -39,6 +40,7 @@ export default function TemporaryDrawer({ genre, openSidebarHandler, isOpen }) {
             />
           ))}
       </List>
+      <TmdbLogo />
     </div>
   );
 

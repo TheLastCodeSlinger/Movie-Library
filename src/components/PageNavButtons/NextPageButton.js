@@ -54,6 +54,7 @@ const NextPageButton = ({ setMovies, setPage, page, genreId, genreName }) => {
       duration: 600,
       offSet: 100,
     });
+    console.log(page, genreName);
   };
 
   return (

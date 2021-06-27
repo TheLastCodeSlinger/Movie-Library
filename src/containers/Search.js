@@ -18,9 +18,9 @@ const Search = ({
   genreName,
 }) => {
   const match = useRouteMatch();
-  
+
   let renderMovieList;
-  if (movies && movies.results.length > 0) {
+  if (movies && movies.results.length > 1) {
     renderMovieList = movies.results.map((movie) => (
       <MovieItem
         movie={movie}
@@ -50,38 +50,36 @@ const Search = ({
     };
     fetchSearchMovies();
     //Rendercondition: Checks if new search has been used.. setGenreId to "query" used to navigate/trigger search.js.
-    if (genreName !== match.params.query) {
-      setPage(1);
+    if (match.params.query !== genreName) {
       setGenreName(match.params.query);
+      setPage(1);
       setGenreId("query");
     }
-  }, [match.params.query, page, setGenreId, setGenreName, setPage, setMovies]);
+  }, [match.params.query, page, setGenreId, setPage, setMovies]);
 
   return (
     <div className="wrapper">
       <h2 className="titlee">{`Search for: "${match.params.query}"`}</h2>
-      <div className="searchMoviesWrapper">
-        {renderMovieList}
-        <div className="pageNavigation-container">
-          {renderMovieList ? (
-            <NextPageButton
-              setMovies={setMovies}
-              setPage={setPage}
-              page={page}
-              genreName={match.params.query}
-              genreId={"query"}
-            />
-          ) : null}
-          {page > 1 ? (
-            <PreviousPageButton
-              setMovies={setMovies}
-              setPage={setPage}
-              page={page}
-              genreId={"query"}
-              genreName={match.params.query}
-            />
-          ) : null}
-        </div>
+      <div className="searchMoviesWrapper">{renderMovieList}</div>
+      <div className="pageNavigation-container">
+        {renderMovieList ? (
+          <NextPageButton
+            setMovies={setMovies}
+            setPage={setPage}
+            page={page}
+            genreName={match.params.query}
+            genreId={"query"}
+          />
+        ) : null}
+        {page > 1 ? (
+          <PreviousPageButton
+            setMovies={setMovies}
+            setPage={setPage}
+            page={page}
+            genreId={"query"}
+            genreName={match.params.query}
+          />
+        ) : null}
       </div>
     </div>
   );

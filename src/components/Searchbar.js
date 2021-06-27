@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import SearchSvg from "../Assets/Search.svg";
 
-const SearchBar = () => {
+const SearchBar = ({setGenreName}) => {
   const [input, setInput] = useState("");
   const node = useRef();
   const inputFocus = useRef();

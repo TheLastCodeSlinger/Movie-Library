@@ -75,7 +75,7 @@ function App() {
     <Router history={history}>
       <div className="container">
         <div className="searchbarWrapper">
-          <SearchBar />
+          <SearchBar setGenreName={setGenreName} />
         </div>
         {!isMobile ? (
           <Sidebar genre={genre} />
@@ -143,6 +143,7 @@ function App() {
               setPage={setPage}
               setGenreName={setGenreName}
               setGenreId={setGenreId}
+              genreName={genreName}
             />
           </Route>
 
