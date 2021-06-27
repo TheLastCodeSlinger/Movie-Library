@@ -56,7 +56,7 @@ export const SidebarRenderLinksDiscovery = ({ openSidebarHandler }) => {
 export const SidebarRenderLinksGenre = (genre) => {
   return (
     <NavLink
-      onClick={console.log("genre")}
+      onClick={genre.openSidebarHandler}
       className="sidebarItem"
       to={{
         //Save genre-id in state. Id can be globally accessed with "const location= useLocation & const {id} = location.?id"

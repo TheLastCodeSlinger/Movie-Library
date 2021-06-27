@@ -4,8 +4,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
 
 import {
   SidebarRenderLinksDiscovery,
@@ -16,34 +14,20 @@ const useStyles = makeStyles({
   list: {
     width: 250,
   },
-  fullList: {
-    width: "auto",
-  },
 });
 
-export default function TemporaryDrawer({
-  isOpen,
-  setIsOpen,
-  genre,
-  openSidebarHandler,
-}) {
-  const classes = useStyles();
-  let modifiedGenre;
-  if (genre) {
-    modifiedGenre = {
-      ...genre,
-      genres: [...genre.genres],
-    };
-  }
-  const list = () => (
+export default function TemporaryDrawer({ genre, openSidebarHandler, isOpen }) {
+const classes = useStyles();
+
+const list = () => (
     <div className={clsx(classes.list)}>
       <List>
         <h2 style={{ textAlign: "center" }}>DISCOVER</h2>
         {genre && (
-          <SidebarRenderLinksDiscovery
+            <SidebarRenderLinksDiscovery
             openSidebarHandler={openSidebarHandler}
-          />
-        )}
+            />
+            )}
       </List>
       <Divider />
       <List>
@@ -53,13 +37,12 @@ export default function TemporaryDrawer({
             <SidebarRenderLinksGenre
               genre={genre}
               key={genre.id}
-              openSidebarHandler={genre.openSidebarHandler}
+              openSidebarHandler={openSidebarHandler}
             />
           ))}
       </List>
     </div>
   );
-  console.log(   "mod");
 
   return (
     <div>
