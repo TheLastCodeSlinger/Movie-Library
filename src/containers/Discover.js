@@ -17,9 +17,9 @@ const RenderDiscover = ({
 }) => {
   //Get State from clicked <Link/>
   const location = useLocation();
-  //const match = useRouteMatch();
   const id = location.state?.id;
   const { discName } = useParams();
+  //const match = useRouteMatch(); Could get the params with match, but decided to do it this way
 
   //Fetch the Discover-List> setMovies to this List > Rerender & Display Discover/XXX
   useEffect(() => {

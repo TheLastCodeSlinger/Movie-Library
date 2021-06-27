@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { MdPlayArrow } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
-export const SidebarRenderLinksDiscovery = ({ openSidebarHandler }) => {
+export const SidebarItemDiscovery = ({ openSidebarHandler }) => {
   return (
     <Fragment>
       <NavLink
@@ -53,7 +53,7 @@ export const SidebarRenderLinksDiscovery = ({ openSidebarHandler }) => {
   );
 };
 
-export const SidebarRenderLinksGenre = (genre) => {
+export const SidebarItemGenre = (genre) => {
   return (
     <NavLink
       onClick={genre.openSidebarHandler}

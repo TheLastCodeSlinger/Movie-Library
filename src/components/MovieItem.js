@@ -10,7 +10,6 @@ import Rating from "./Rating";
 
 const MovieItem = (movie) => {
   const [loading, setLoading] = useState(false);
-  //const [error, setError] = useState(false);
 
   useEffect(() => {
     return () => setLoading(false);
@@ -33,7 +32,7 @@ const MovieItem = (movie) => {
           src={`https://image.tmdb.org/t/p/w342/${movie.poster_path}`}
           alt={movie.title}
           onLoad={() => setLoading(true)}
-          //If display: none, the spinner will be displayed
+          //If display: none, the spinner will be displayed.. If error occurs, Nothing.svg will be rendered and the error set to null.
           style={!loading ? { display: "none" } : {}}
           onError={(e) => {
             e.target.src = `${Nothing}`;

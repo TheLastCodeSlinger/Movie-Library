@@ -27,7 +27,7 @@ const Cast = (cast) => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
-  // Slider needs container-wrap, to set width & overflow, else the Slider doesn't work properly. Without, it won't resize.
+  // Slider needs container-wrap to set width & overflow, else the Slider doesn't work properly. Without, it won't resize.
   return (
     <div className="container-wrap">
       <Slider {...settings}>{items}</Slider>

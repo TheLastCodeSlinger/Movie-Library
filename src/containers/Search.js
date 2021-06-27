@@ -18,8 +18,25 @@ const Search = ({
   genreName,
 }) => {
   const match = useRouteMatch();
-  console.log(match.params.query);
+  
+  let renderMovieList;
+  if (movies && movies.results.length > 0) {
+    renderMovieList = movies.results.map((movie) => (
+      <MovieItem
+        movie={movie}
+        key={movie.id}
+        poster_path={movie.poster_path}
+        title={movie.title}
+        id={movie.id}
+      />
+    ));
+  } else {
+    renderMovieList = (
+      <h2 style={{ fontSize: "2rem" }}>Couldn't find a match..</h2>
+    );
+  }
 
+  //Get the searchquery from URL and then use it to search fetch data
   useEffect(() => {
     const fetchSearchMovies = async () => {
       const result = await tmdbAPI.get(`/search/movie`, {
@@ -29,12 +46,10 @@ const Search = ({
           page: page,
         },
       });
-      console.log(result.data, "RESSSSULT");
       setMovies(result.data);
-      console.log(result.data.results);
     };
-    console.log(genreName);
     fetchSearchMovies();
+    //Rendercondition: Checks if new search has been used.. setGenreId to "query" used to navigate/trigger search.js.
     if (genreName !== match.params.query) {
       setPage(1);
       setGenreName(match.params.query);
@@ -46,25 +61,17 @@ const Search = ({
     <div className="wrapper">
       <h2 className="titlee">{`Search for: "${match.params.query}"`}</h2>
       <div className="searchMoviesWrapper">
-        {movies
-          ? movies.results.map((movie) => (
-              <MovieItem
-                movie={movie}
-                key={movie.id}
-                poster_path={movie.poster_path}
-                title={movie.title}
-                id={movie.id}
-              />
-            ))
-          : null}
+        {renderMovieList}
         <div className="pageNavigation-container">
-          <NextPageButton
-            setMovies={setMovies}
-            setPage={setPage}
-            page={page}
-            genreName={match.params.query}
-            genreId={"query"}
-          />
+          {renderMovieList ? (
+            <NextPageButton
+              setMovies={setMovies}
+              setPage={setPage}
+              page={page}
+              genreName={match.params.query}
+              genreId={"query"}
+            />
+          ) : null}
           {page > 1 ? (
             <PreviousPageButton
               setMovies={setMovies}

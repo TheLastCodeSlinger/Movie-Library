@@ -1,9 +1,9 @@
-import "./Css/Searchbar.css"
+import "./Css/Searchbar.css";
 
-import React, { useRef,useState } from "react";
+import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import SearchSvg from '../Assets/Search.svg'
+import SearchSvg from "../Assets/Search.svg";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
@@ -11,6 +11,7 @@ const SearchBar = () => {
   const inputFocus = useRef();
   const history = useHistory();
 
+  //history.push will trigger useEffect in Search.js. There, match will fetch the input and search for a match.
   const onFormSubmit = (e) => {
     e.preventDefault();
     if (input.length === 0) {
@@ -22,7 +23,7 @@ const SearchBar = () => {
 
   return (
     <form
-      className="formy"
+      className="form"
       onClick={() => {
         inputFocus.current.focus();
       }}
@@ -33,7 +34,7 @@ const SearchBar = () => {
         <img src={`${SearchSvg}`} alt="SearchButton" />
       </button>
       <input
-        className="inputt"
+        className="input"
         onChange={(e) => setInput(e.target.value)}
         ref={inputFocus}
         value={input}

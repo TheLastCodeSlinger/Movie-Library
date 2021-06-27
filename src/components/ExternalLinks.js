@@ -9,7 +9,7 @@ import ModalVideo from "react-modal-video";
 export const Trailer = (url) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   let trailer;
-  //Check if the Movie has a Trailer and if so, set trailer to the youtube-key
+  //It's an array with different types of videos. This function looks for a trailer. Filter should also work here.
   if (url.url.results) {
     for (const key of url.url.results) {
       if (key.type === "Trailer") {
@@ -20,6 +20,7 @@ export const Trailer = (url) => {
   }
 
   let modal;
+  //If a trailer has been found, then the modalbutton will be rendered.
   if (trailer) {
     modal = (
       <Fragment>

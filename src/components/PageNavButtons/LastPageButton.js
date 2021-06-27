@@ -16,7 +16,7 @@ const PreviousPageButton = ({
   let changeUrlToPreviousPage;
   let params;
 
-  //Genres have a Number as Id(2,22,322) whereas Discover has a String-Id (Popular/Top_rated)
+  //Genres have a Number as Id(2,22,322) whereas Discover has a String-Id (Popular/Top_rated). "query" is hardcoded in Search.js specially for this check
   if (genreId === "query") {
     navigateToPreviousPage = `/search/movie`;
     changeUrlToPreviousPage = `/search/${genreName}/page=${page - 1}`;

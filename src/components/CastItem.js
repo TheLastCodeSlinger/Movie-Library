@@ -2,11 +2,10 @@ import "./Css/CastItem.css";
 
 import { Link } from "react-router-dom";
 
-import { Avatar } from "./Logo";
+import { Avatar } from "./IconsAsComponent";
 
 const CastItem = (cast) => {
   return (
-    // Here could be a Link to the Persons-Profile
     <Link to={`/Person/${cast.cast.id}`}>
       <div>
         {cast.cast.profile_path ? (

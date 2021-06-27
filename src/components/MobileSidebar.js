@@ -1,13 +1,13 @@
 import "./Css/MobileSidebar.css";
 
-import { Fragment,useState } from "react";
+import { Fragment, useState } from "react";
 
 import MobileIconSvg from "../Assets/MobileIcon.svg";
 import Drawer from "./Drawer";
 
 const MobileSidebar = ({ genre }) => {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   const openSidebarHandler = () => {
     setIsOpen(!isOpen);
   };
@@ -21,7 +21,6 @@ const MobileSidebar = ({ genre }) => {
         <div className="mobileSidebar">
           <Drawer
             isOpen={isOpen}
-            setIsOpen={setIsOpen}
             openSidebarHandler={openSidebarHandler}
             genre={genre}
           />

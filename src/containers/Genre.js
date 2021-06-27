@@ -39,7 +39,7 @@ const RenderGenre = ({
       setMovies(result.data);
       setGenreId(id);
     };
-    //check if still in same genre . Yes = nothing happens.
+    //check if still in same genre . Yes = nothing happens. Else = execude code+rerender.
     if (genreId !== id || option.value) {
       fetchClickedCategoryData();
       setPage(1);
@@ -52,9 +52,6 @@ const RenderGenre = ({
     }
   }, [id, page, option.value, setMovies, setGenreName, setGenreId, setPage]);
 
-  if (window.innerWidth < 900) {
-    console.log("I DID IT");
-  }
   return (
     <div style={{ display: "flex", width: "100%", flexDirection: "column" }}>
       <SortBy option={option} setOption={setOption} />

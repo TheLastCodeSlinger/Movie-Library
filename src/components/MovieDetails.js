@@ -23,9 +23,11 @@ const MovieDetails = ({ movieDetails, setMovieDetails, isMobile }) => {
 
   useEffect(() => {
     const fetchAllMovieDetails = async () => {
-      const result = await tmdbAPI.get(
-        `/movie/${movieId}?api_key=${process.env.REACT_APP_API}&language=en-US`
-      );
+      const result = await tmdbAPI.get(`/movie/${movieId}`, {
+        params: {
+          language: "en-US",
+        },
+      });
       setMovieDetails(result.data);
     };
     fetchAllMovieDetails();
@@ -38,9 +40,11 @@ const MovieDetails = ({ movieDetails, setMovieDetails, isMobile }) => {
 
   useEffect(() => {
     const fetchCastMemberData = async () => {
-      const result = await tmdbAPI.get(
-        `/movie/${movieId}/credits?api_key=${process.env.REACT_APP_API}&language=en-US`
-      );
+      const result = await tmdbAPI.get(`/movie/${movieId}/credits`, {
+        params: {
+          language: "en-US",
+        },
+      });
       setCast(result.data);
     };
     fetchCastMemberData();
@@ -67,11 +71,11 @@ const MovieDetails = ({ movieDetails, setMovieDetails, isMobile }) => {
         },
       });
       setTrailer(result.data);
-      console.log(result.data, "ME FROM TRAILER");
     };
     fetchTrailerDetails();
   }, [movieId]);
 
+  //Displays all the Genres a movie has.
   let movieIncludesGenres;
   if (movieDetails) {
     movieIncludesGenres = movieDetails.genres.map((genre) => (

@@ -3,18 +3,18 @@ import "../components/Css/ExternalLinks.css";
 
 import { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router";
-import {animateScroll as scroll} from 'react-scroll'
+import { animateScroll as scroll } from "react-scroll";
 
 import tmdbAPI from "../API/tmdbAPI";
-import { Avatar } from "../components/Logo";
+import { Avatar } from "../components/IconsAsComponent";
 import MovieItem from "../components/MovieItem";
 
 const Person = () => {
   const match = useRouteMatch();
   const [personData, setPersonData] = useState();
   const [movieCredits, setMovieCredits] = useState();
-  console.log(match.params.personId);
 
+  //Fetch ID from url => Use id to fetch data
   useEffect(() => {
     const fetchPersonData = async () => {
       const result = await tmdbAPI.get(`/person/${match.params.personId}`, {
@@ -32,6 +32,7 @@ const Person = () => {
     fetchPersonData();
   }, [match.params.personId]);
 
+  //Fetch movies where the person also played in.
   useEffect(() => {
     const fetchCreditMovies = async () => {
       const result = await tmdbAPI.get(

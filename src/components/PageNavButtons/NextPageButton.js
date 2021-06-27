@@ -10,7 +10,7 @@ const NextPageButton = ({ setMovies, setPage, page, genreId, genreName }) => {
   let changeUrlToNextPage;
   let params = {};
 
-  //Genres have a Number as Id(2,22,322) whereas Discover has a String-Id (Popular/Top_rated)
+  //Genres have a Number as Id(2,22,322) whereas Discover has a String-Id (Popular/Top_rated). "query" is hardcoded in Search.js specially for this check
   if (genreId === "query") {
     navigateToNextPage = `/search/movie`;
     changeUrlToNextPage = `/search/${genreName}/page=${page + 1}`;
@@ -46,7 +46,6 @@ const NextPageButton = ({ setMovies, setPage, page, genreId, genreName }) => {
     const fetchData = async () => {
       const result = await tmdbAPI.get(navigateToNextPage, params);
       setMovies(result.data);
-      console.log("nextpage resukt:", page);
     };
     setPage(page + 1);
     fetchData();

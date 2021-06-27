@@ -13,12 +13,15 @@ const LandingPage = ({
   genreId,
   genreName,
 }) => {
-  //Fetch Discover/Popular page and render it
+  //Fetch Discover/Popular page and render it.
   useEffect(() => {
     const fetchPopularPageOneData = async () => {
-      const result = await tmdbAPI.get(
-        `/movie/popular?api_key=${process.env.REACT_APP_API}&language=en-US&page=1`
-      );
+      const result = await tmdbAPI.get(`/movie/popular`, {
+        params: {
+          language: "en-US",
+          page: 1,
+        },
+      });
       setMovies(result.data);
       setGenreName("Popular");
       setGenreId("popular");

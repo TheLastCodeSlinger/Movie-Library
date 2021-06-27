@@ -1,13 +1,12 @@
 import "./Css/App.css";
 
-import { useEffect,useState } from "react";
-import { BrowserRouter as Router,Route, Switch } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
 
 import tmdbAPI from "../API/tmdbAPI";
 import MobileSidebar from "../components/MobileSidebar";
 import MovieDetails from "../components/MovieDetails";
 import SearchBar from "../components/Searchbar";
-import history from "../history";
 import RenderDiscover from "./Discover";
 import RenderGenre from "./Genre";
 import Home from "./Home";
@@ -23,6 +22,7 @@ function App() {
   const [genre, setGenre] = useState(0);
   const [movieDetails, setMovieDetails] = useState();
   const [isMobile, setisMobile] = useState(null);
+  const history = useHistory();
 
   //Loading the movies for the landing/first page and setting states
   useEffect(() => {
@@ -48,6 +48,7 @@ function App() {
     fetchGenreCateforiesData();
   }, []);
 
+  //Not sure what i wanna do with this
   useEffect(() => {
     const fetchGenreCateforiesData = async () => {
       const result = await tmdbAPI.get("/configuration");
@@ -56,13 +57,14 @@ function App() {
     fetchGenreCateforiesData();
   }, []);
 
-  // Set amount of items to show on slider based on the width of the element
+  // Called from useEffect to check the screenwidth. Changes to MobileSidebar and Cast-Size
   const changeMobile = () => {
     window.matchMedia("(max-width: 1000px)").matches
       ? setisMobile(true)
       : setisMobile(false);
   };
 
+  // Execudes on every resize
   useEffect(() => {
     changeMobile();
     window.addEventListener("resize", changeMobile);
@@ -75,8 +77,11 @@ function App() {
         <div className="searchbarWrapper">
           <SearchBar />
         </div>
-        {!isMobile ? <Sidebar  genre={genre} /> : <MobileSidebar genre={genre} />}
-        {console.log(isMobile)}
+        {!isMobile ? (
+          <Sidebar genre={genre} />
+        ) : (
+          <MobileSidebar genre={genre} />
+        )}
 
         <Switch>
           <Route path="/" exact>
@@ -142,7 +147,7 @@ function App() {
           </Route>
 
           <Route path="*">
-            <div>ERROR</div>
+            <div style={{fontSize: "2rem", margin: "20rem auto"}}>Couldn't find this Site...</div>
           </Route>
         </Switch>
       </div>

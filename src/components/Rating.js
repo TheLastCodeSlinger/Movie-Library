@@ -2,7 +2,7 @@ import "./Css/MovieItems.css";
 
 import Stars from "react-rating";
 
-import { FullRatingIcon,RatingIcon } from "./Logo";
+import { FullRatingIcon, RatingIcon } from "./IconsAsComponent";
 
 const Rating = ({ number }) => {
   return (
