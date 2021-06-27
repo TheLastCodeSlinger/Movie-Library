@@ -13,13 +13,18 @@ const Cast = (cast) => {
     <CastItem cast={cast} key={cast.id} />
   ));
 
+  let changeDisplayedSlides = 9;
+  if(cast.isMobile){
+    changeDisplayedSlides = 5
+  }
+
   const settings = {
     dots: false,
     autoplay: true,
     autoplaySpeed: 2000,
     infinite: true,
     speed: 500,
-    slidesToShow: 6,
+    slidesToShow: changeDisplayedSlides,
     slidesToScroll: 1,
   };
 // Slider needs container-wrap, to set width & overflow, else the Slider doesn't work properly. Without, it won't resize.

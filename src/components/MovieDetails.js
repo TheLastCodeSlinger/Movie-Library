@@ -14,7 +14,7 @@ import { ExternalHomePage, Imdb, Trailer } from "./ExternalLinks";
 import Rating from "./Rating";
 import Nothing from "../Assets/Nothing.svg";
 
-const MovieDetails = ({ movieDetails, setMovieDetails }) => {
+const MovieDetails = ({ movieDetails, setMovieDetails, isMobile }) => {
   const match = useRouteMatch();
   const movieId = match.params.movieId;
   const [cast, setCast] = useState();
@@ -125,7 +125,7 @@ const MovieDetails = ({ movieDetails, setMovieDetails }) => {
                   <ExternalHomePage url={movieDetails.homepage} />
                 </div>
                 <h3>THE CAST:</h3>
-                {cast && <Cast cast={cast} />}
+                {cast && <Cast cast={cast} isMobile={isMobile} />}
               </div>
             </div>
           </LazyLoad>

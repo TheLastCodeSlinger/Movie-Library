@@ -123,6 +123,7 @@ function App() {
             <MovieDetails
               movieDetails={movieDetails}
               setMovieDetails={setMovieDetails}
+              isMobile={isMobile}
             />
           </Route>
 
