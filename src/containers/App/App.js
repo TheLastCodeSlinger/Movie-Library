@@ -1,18 +1,18 @@
-import "./Css/App.css";
+import "./App.css";
 
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
 
-import tmdbAPI from "../API/tmdbAPI";
-import MobileSidebar from "../components/MobileSidebar";
-import MovieDetails from "../components/MovieDetails";
-import SearchBar from "../components/Searchbar";
-import RenderDiscover from "./Discover";
-import RenderGenre from "./Genre";
-import Home from "./Home";
-import Person from "./Person";
-import Search from "./Search";
-import Sidebar from "./Sidebar";
+import tmdbAPI from "../../API/tmdbAPI";
+import MobileSidebar from "../../components/MobileUi/MobileSidebar";
+import MovieDetails from "../../components/Movie/MovieDetails/MovieDetails";
+import SearchBar from "../../components/Searchbar/Searchbar";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import RenderDiscover from "../Routes/Discover";
+import RenderGenre from "../Routes/Genre";
+import Home from "../Routes/Home";
+import Person from "../Routes/Person/Person";
+import Search from "../Routes/Search/Search";
 
 function App() {
   const [movies, setMovies] = useState();

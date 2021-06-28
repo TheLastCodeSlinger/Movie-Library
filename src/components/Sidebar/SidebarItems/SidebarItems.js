@@ -1,4 +1,4 @@
-import "./Css/SidebarItems.css";
+import "./SidebarItems.css";
 
 import { Fragment } from "react";
 import { MdPlayArrow } from "react-icons/md";

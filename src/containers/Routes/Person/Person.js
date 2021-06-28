@@ -1,13 +1,13 @@
-import "./Css/Person.css";
-import "../components/Css/ExternalLinks.css";
+import "./Person.css";
+import "../../../components/ExternalLinks/ExternalLinks.css";
 
 import { useEffect, useState } from "react";
 import { useRouteMatch } from "react-router";
 import { animateScroll as scroll } from "react-scroll";
 
-import tmdbAPI from "../API/tmdbAPI";
-import { Avatar } from "../components/IconsAsComponent";
-import MovieItem from "../components/MovieItem";
+import tmdbAPI from "../../../API/tmdbAPI";
+import { Avatar } from "../../../components/IconsAsComponent/IconsAsComponent";
+import MovieItem from "../../../components/Movie/MovieItem/MovieItem";
 
 const Person = () => {
   const match = useRouteMatch();

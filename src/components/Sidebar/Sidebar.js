@@ -1,8 +1,8 @@
-import "./Css/Sidebar.css";
-import "./Css/SidebarItems.css";
+import "./Sidebar.css";
+import "./SidebarItems/SidebarItems.css";
 
-import { TmdbLogo } from "../components/IconsAsComponent";
-import { SidebarItemDiscovery, SidebarItemGenre } from "./SidebarItems";
+import { TmdbLogo } from "../IconsAsComponent/IconsAsComponent";
+import { SidebarItemDiscovery, SidebarItemGenre } from "./SidebarItems/SidebarItems";
 
 const Sidebar = ({ genre }) => {
   return (

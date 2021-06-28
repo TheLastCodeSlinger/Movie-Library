@@ -1,8 +1,8 @@
-import "./Css/CastItem.css";
+import "../CastItem.css";
 
 import { Link } from "react-router-dom";
 
-import { Avatar } from "./IconsAsComponent";
+import { Avatar } from "../../IconsAsComponent/IconsAsComponent";
 
 const CastItem = (cast) => {
   return (

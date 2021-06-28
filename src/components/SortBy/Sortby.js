@@ -1,4 +1,4 @@
-import "./Css/SortBy.css";
+import "./SortBy.css";
 
 import Select from "react-select";
 

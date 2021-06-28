@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 
-import tmdbAPI from "../API/tmdbAPI";
-import Content from "../components/Content";
-import SortBy from "../components/Sortby";
+import tmdbAPI from "../../API/tmdbAPI";
+import Content from "../../components/Movie/Content/Content";
+import SortBy from "../../components/SortBy/Sortby";
 
 const RenderGenre = ({
   setMovies,

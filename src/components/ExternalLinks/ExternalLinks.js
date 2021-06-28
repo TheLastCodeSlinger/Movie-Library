@@ -1,5 +1,5 @@
-import "./Css/ExternalLinks.css";
-import "./Css/App.scss";
+import "./ExternalLinks.css";
+import "./Modal.scss";
 
 import { Fragment, useState } from "react";
 import ModalVideo from "react-modal-video";

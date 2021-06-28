@@ -1,12 +1,12 @@
-import "./Css/Search.css";
+import "./Search.css";
 
 import { useEffect } from "react";
 import { useRouteMatch } from "react-router-dom";
 
-import tmdbAPI from "../API/tmdbAPI";
-import MovieItem from "../components/MovieItem";
-import PreviousPageButton from "../components/PageNavButtons/LastPageButton";
-import NextPageButton from "../components/PageNavButtons/NextPageButton";
+import tmdbAPI from "../../../API/tmdbAPI";
+import MovieItem from "../../../components/Movie/MovieItem/MovieItem";
+import PreviousPageButton from "../../../components/PageNavButtons/LastPageButton";
+import NextPageButton from "../../../components/PageNavButtons/NextPageButton";
 
 const Search = ({
   page,

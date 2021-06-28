@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
-import tmdbAPI from "../API/tmdbAPI";
-import Content from "../components/Content";
+import tmdbAPI from "../../API/tmdbAPI";
+import Content from "../../components/Movie/Content/Content";
 
 const LandingPage = ({
   setMovies,

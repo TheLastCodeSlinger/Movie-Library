@@ -5,11 +5,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import React from "react";
 
+import { TmdbLogo } from "../../IconsAsComponent/IconsAsComponent";
 import {
   SidebarItemDiscovery,
   SidebarItemGenre,
-} from "../containers/SidebarItems";
-import { TmdbLogo } from "./IconsAsComponent";
+} from "../../Sidebar/SidebarItems/SidebarItems";
 
 const useStyles = makeStyles({
   list: {

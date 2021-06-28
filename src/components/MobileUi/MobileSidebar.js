@@ -1,9 +1,9 @@
-import "./Css/MobileSidebar.css";
+import "./MobileSidebar.css";
 
 import { Fragment, useState } from "react";
 
-import MobileIconSvg from "../Assets/MobileIcon.svg";
-import Drawer from "./Drawer";
+import MobileIconSvg from "../../Assets/MobileIcon.svg";
+import Drawer from "./Drawer/Drawer";
 
 const MobileSidebar = ({ genre }) => {
   const [isOpen, setIsOpen] = useState(false);

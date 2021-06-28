@@ -1,5 +1,5 @@
-import "./Css/MovieDetails.css";
-import "../containers/Css/SidebarItems.css";
+import "./MovieDetails.css";
+import "../../Sidebar/SidebarItems/SidebarItems.css";
 
 import { useEffect, useState } from "react";
 import { MdPlayArrow } from "react-icons/md";
@@ -7,12 +7,12 @@ import LazyLoad from "react-lazyload";
 import { useRouteMatch } from "react-router";
 import { animateScroll as scroll } from "react-scroll";
 
-import tmdbAPI from "../API/tmdbAPI";
-import Nothing from "../Assets/Nothing.svg";
-import Cast from "./Cast";
-import { ExternalHomePage, Imdb, Trailer } from "./ExternalLinks";
-import MovieItem from "./MovieItem";
-import Rating from "./Rating";
+import tmdbAPI from "../../../API/tmdbAPI";
+import Nothing from "../../../Assets/Nothing.svg";
+import Cast from "../../Cast/Cast";
+import { ExternalHomePage, Imdb, Trailer } from "../../ExternalLinks/ExternalLinks";
+import Rating from "../../Rating/Rating";
+import MovieItem from "../MovieItem/MovieItem";
 
 const MovieDetails = ({ movieDetails, setMovieDetails, isMobile }) => {
   const match = useRouteMatch();
@@ -22,6 +22,7 @@ const MovieDetails = ({ movieDetails, setMovieDetails, isMobile }) => {
   const [trailer, setTrailer] = useState(null);
 
   useEffect(() => {
+    setMovieDetails(null)
     const fetchAllMovieDetails = async () => {
       const result = await tmdbAPI.get(`/movie/${movieId}`, {
         params: {

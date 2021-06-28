@@ -1,11 +1,11 @@
-import "./Css/Searchbar.css";
+import "./Searchbar.css";
 
 import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import SearchSvg from "../Assets/Search.svg";
+import SearchSvg from "../../Assets/Search.svg";
 
-const SearchBar = ({setGenreName}) => {
+const SearchBar = () => {
   const [input, setInput] = useState("");
   const node = useRef();
   const inputFocus = useRef();

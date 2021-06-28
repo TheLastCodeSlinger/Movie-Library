@@ -10,6 +10,19 @@ const NextPageButton = ({ setMovies, setPage, page, genreId, genreName }) => {
   let changeUrlToNextPage;
   let params = {};
 
+  const nextPageHandler = () => {
+    const fetchData = async () => {
+      const result = await tmdbAPI.get(navigateToNextPage, params);
+      setMovies(result.data);
+    };
+    setPage(page + 1);
+    fetchData();
+    scroll.scrollToTop({
+      smooth: true,
+      duration: 600,
+      offSet: 100,
+    });
+  };
   //Genres have a Number as Id(2,22,322) whereas Discover has a String-Id (Popular/Top_rated). "query" is hardcoded in Search.js specially for this check
   if (genreId === "query") {
     navigateToNextPage = `/search/movie`;
@@ -41,21 +54,6 @@ const NextPageButton = ({ setMovies, setPage, page, genreId, genreName }) => {
       },
     };
   }
-
-  const nextPageHandler = () => {
-    const fetchData = async () => {
-      const result = await tmdbAPI.get(navigateToNextPage, params);
-      setMovies(result.data);
-    };
-    setPage(page + 1);
-    fetchData();
-    scroll.scrollToTop({
-      smooth: true,
-      duration: 600,
-      offSet: 100,
-    });
-    console.log(page, genreName);
-  };
 
   return (
     <Link
