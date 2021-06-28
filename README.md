@@ -1,72 +1,37 @@
-Comment code in /node_modules/history/esm/history.js:87 to avoid throwing an error.
+# Movie-Library created with The Movie Database API. 
+## [Click here](https://movie-library-b420b.web.app/) to check it out!
 
-# Getting Started with Create React App
+## Why a Movie-Library?
+### I recently watched more series than movies. While i was looking for movies, i had the idea to create a project. I stumbled upon TMDB-API and thought of a basic layout to have some genres and a movielist. The more i used the API, the more i discovered and added to this project.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## **Thoughts i had at the start/during this project:**
+### Only use hooks/funcional components and no Redux.
+#### As the project grew bigger, passing states/properties has become bothersome. The project isn't very deeply nested, so it was still manageable. 
+### Stick to basic css:
+#### I wanted to test the limits of basic css. More components means more classes. I couldn't track them properly and therefore wrote the same css instead of reusing it. 
+## **Thoughts at the end:**
+### Redux:
+#### At a certain point i should have used Redux. The code would be a lot cleaner and while creating new components i wouldn't have to worry about passing props down. Fetching data and other functions could be stored in "actions". This would make the code cleaner and easier to maintain. Last point - Storing state. I uploaded this project on Firebase and the state will reset on refresh. Saving all states in localStorage without Redux is a lot of repeated code. In Redux, i could simply have all states in the store and load them on refresh...
+### CSS:
+#### Giving good names to classes determines the readability. Well, i could still manage it, because i wrote the code, but others might have trouble. Next time, i would either use **SCSS** or **Style.components**. StyledComponents are in the **same file** as the code and the **divs** can be changed to component-style. This adds great readability and since the styling is in the same file, it is easy to find and maintain.
 
-## Available Scripts
+## Things i learned from this project:
+* Limits of CSS and alternatives i will use in future projects (SCSS, Styled.Components)
+* Got better with grid/flex and responsive design
+* Using Redux, if i have to pass too many states from top>bottom
+* **Github/Git** using versioncontrol allowed me to try new implementations by having a secure fallback
+* Datafetching with dynamic input
+* Used ESlint & prettier to somewhat structure my code
 
-In the project directory, you can run:
+## Things i can improve on:
+* Git/Github since i worked alone on this project, my comments are lacking. Sometimes i make a lot of changes in different files and comment them briefly all together. Maybe focus more on single files and the changes i made..
+* Errorhandling: Well, didn't use it much. Not sure where and when, except when my app crashes, then i somehow try to solve it.
+* Using custom hooks. Haven't used them so far, but could be used in some cases. 
+* Look for updated libraries. The _Trailer_ and _Cast-Slider_ are outdated and throw some errors. (it works, so i left it^^)
+* Taking some time to plan next steps. 
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+##### Project with create-react-app
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

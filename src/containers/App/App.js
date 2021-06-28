@@ -1,14 +1,14 @@
 import "./App.css";
 
-import { createBrowserHistory } from 'history'
+import { createBrowserHistory } from "history";
 import { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import tmdbAPI from "../../API/tmdbAPI";
 import MobileSidebar from "../../components/MobileUi/MobileSidebar";
-import MovieDetails from "../../components/Movie/MovieDetails/MovieDetails";
 import SearchBar from "../../components/Searchbar/Searchbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
+import MovieDetails from "../MovieDetails/MovieDetails";
 import RenderDiscover from "../Routes/Discover";
 import RenderGenre from "../Routes/Genre";
 import Home from "../Routes/Home";
@@ -45,15 +45,6 @@ function App() {
         `/genre/movie/list?api_key=${process.env.REACT_APP_API}&language=en-US`
       );
       setGenre(result.data);
-    };
-    fetchGenreCateforiesData();
-  }, []);
-
-  //Not sure what i wanna do with this
-  useEffect(() => {
-    const fetchGenreCateforiesData = async () => {
-      const result = await tmdbAPI.get("/configuration");
-      console.log(result.data, "meConfig", "next tmdbAPI", tmdbAPI);
     };
     fetchGenreCateforiesData();
   }, []);
@@ -149,7 +140,9 @@ function App() {
           </Route>
 
           <Route path="*">
-            <div style={{fontSize: "2rem", margin: "20rem auto"}}>Couldn't find this Site...</div>
+            <div style={{ fontSize: "2rem", margin: "20rem auto" }}>
+              Couldn't find this Site...
+            </div>
           </Route>
         </Switch>
       </div>

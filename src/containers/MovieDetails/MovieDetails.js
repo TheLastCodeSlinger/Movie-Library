@@ -1,5 +1,5 @@
 import "./MovieDetails.css";
-import "../../Sidebar/SidebarItems/SidebarItems.css";
+import "../../components/Sidebar/SidebarItems/SidebarItems.css";
 
 import { useEffect, useState } from "react";
 import { MdPlayArrow } from "react-icons/md";
@@ -7,18 +7,18 @@ import LazyLoad from "react-lazyload";
 import { useRouteMatch } from "react-router";
 import { animateScroll as scroll } from "react-scroll";
 
-import tmdbAPI from "../../../API/tmdbAPI";
-import Nothing from "../../../Assets/Nothing.svg";
-import Cast from "../../Cast/Cast";
-import { ExternalHomePage, Imdb, Trailer } from "../../ExternalLinks/ExternalLinks";
-import Rating from "../../Rating/Rating";
-import MovieItem from "../MovieItem/MovieItem";
+import tmdbAPI from "../../API/tmdbAPI";
+import Nothing from "../../Assets/Nothing.svg";
+import Cast from "../../components/Cast/Cast";
+import { ExternalHomePage, Imdb, Trailer } from "../../components/ExternalLinks/ExternalLinks";
+import MovieItem from "../../components/Movie/MovieItem/MovieItem";
+import Rating from "../../components/Rating/Rating";
 
 const MovieDetails = ({ movieDetails, setMovieDetails, isMobile }) => {
   const match = useRouteMatch();
   const movieId = match.params.movieId;
-  const [cast, setCast] = useState();
-  const [recommendedMovies, setRecommendedMovies] = useState();
+  const [cast, setCast] = useState(null);
+  const [recommendedMovies, setRecommendedMovies] = useState(null);
   const [trailer, setTrailer] = useState(null);
 
   useEffect(() => {
