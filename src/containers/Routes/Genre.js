@@ -24,6 +24,7 @@ const RenderGenre = ({
     value: "popularity.desc",
     label: "Popularity",
   });
+  
 
   //Fetch the Genre-List > setMovies to this List > Rerender & Display Genre-Page1
   useEffect(() => {

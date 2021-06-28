@@ -1,7 +1,8 @@
 import "./App.css";
 
+import { createBrowserHistory } from 'history'
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import tmdbAPI from "../../API/tmdbAPI";
 import MobileSidebar from "../../components/MobileUi/MobileSidebar";
@@ -22,7 +23,7 @@ function App() {
   const [genre, setGenre] = useState(0);
   const [movieDetails, setMovieDetails] = useState();
   const [isMobile, setisMobile] = useState(null);
-  const history = useHistory();
+  const history = createBrowserHistory();
 
   //Loading the movies for the landing/first page and setting states
   useEffect(() => {

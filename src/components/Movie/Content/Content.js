@@ -4,6 +4,7 @@ import PreviousPageButton from "../../PageNavButtons/LastPageButton";
 import NextPageButton from "../../PageNavButtons/NextPageButton";
 import MovieItem from "../MovieItem/MovieItem";
 
+
 const Content = ({ genreId, page, setMovies, setPage, genreName, movies }) => {
   let renderMovieList;
 
