@@ -3,16 +3,8 @@ import { useEffect } from "react";
 import tmdbAPI from "../../API/tmdbAPI";
 import Content from "../../components/Movie/Content/Content";
 
-const LandingPage = ({
-  setMovies,
-  setPage,
-  setGenreName,
-  setGenreId,
-  movies,
-  page,
-  genreId,
-  genreName,
-}) => {
+const LandingPage = ({ ...props }) => {
+  const { setMovies, setPage, setGenreName, setGenreId, genreId } = props;
   //Fetch Discover/Popular page and render it.
   useEffect(() => {
     const fetchPopularPageOneData = async () => {
@@ -30,17 +22,7 @@ const LandingPage = ({
     fetchPopularPageOneData();
   }, [genreId, setMovies, setGenreId, setGenreName, setPage]);
 
-  return (
-    <Content
-      movies={movies}
-      setMovies={setMovies}
-      page={page}
-      setPage={setPage}
-      genreId={genreId}
-      setGenreId={setGenreId}
-      genreName={genreName}
-    />
-  );
+  return <Content props={props} />;
 };
 
 export default LandingPage;

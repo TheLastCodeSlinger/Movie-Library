@@ -19,18 +19,20 @@ function App() {
   const [movies, setMovies] = useState();
   const [page, setPage] = useState(1);
   const [genreId, setGenreId] = useState();
-  const [genreName, setGenreName] = useState();
+  const [genreName, setGenreName] = useState("");
   const [genre, setGenre] = useState(0);
-  const [movieDetails, setMovieDetails] = useState();
   const [isMobile, setisMobile] = useState(null);
   const history = createBrowserHistory();
 
   //Loading the movies for the landing/first page and setting states
   useEffect(() => {
     const fetchPopularDataInitial = async () => {
-      const result = await tmdbAPI.get(
-        `/movie/popular?api_key=${process.env.REACT_APP_API}&language=en-US&page=1`
-      );
+      const result = await tmdbAPI.get(`/movie/popular`, {
+        params: {
+          language: "en-US",
+          page: 1,
+        },
+      });
       setMovies(result.data);
       setGenreName("Popular");
       setGenreId("popular");
@@ -41,9 +43,11 @@ function App() {
   //Fetch an Array, where all Genre-Tags are listed as strings.
   useEffect(() => {
     const fetchGenreCateforiesData = async () => {
-      const result = await tmdbAPI.get(
-        `/genre/movie/list?api_key=${process.env.REACT_APP_API}&language=en-US`
-      );
+      const result = await tmdbAPI.get(`/genre/movie/list`, {
+        params: {
+          language: "en-US",
+        },
+      });
       setGenre(result.data);
     };
     fetchGenreCateforiesData();
@@ -67,7 +71,7 @@ function App() {
     <Router history={history}>
       <div className="container">
         <div className="searchbarWrapper">
-          <SearchBar setGenreName={setGenreName} />
+          <SearchBar setGenreId={setGenreId} />
         </div>
         {!isMobile ? (
           <Sidebar genre={genre} />
@@ -102,7 +106,7 @@ function App() {
             />
           </Route>
 
-          <Route path={`/Genre/:genName`}>
+          <Route path="/Genre/:genName" exact>
             <RenderGenre
               setMovies={setMovies}
               movies={movies}
@@ -112,22 +116,21 @@ function App() {
               setGenreName={setGenreName}
               page={page}
               genreName={genreName}
+              history={history}
             />
           </Route>
 
-          <Route path="/Movie/:movieName/:movieId">
+          <Route path="/Movie/:movieName/:movieId" exact>
             <MovieDetails
-              movieDetails={movieDetails}
-              setMovieDetails={setMovieDetails}
               isMobile={isMobile}
             />
           </Route>
 
-          <Route path="/Person/:personId">
+          <Route path="/Person/:personId" exact>
             <Person />
           </Route>
 
-          <Route path="/search/:query">
+          <Route path="/search/:query" exact>
             <Search
               setMovies={setMovies}
               movies={movies}
@@ -136,6 +139,7 @@ function App() {
               setGenreName={setGenreName}
               setGenreId={setGenreId}
               genreName={genreName}
+              genreId={genreId}
             />
           </Route>
 

@@ -4,22 +4,15 @@ import PreviousPageButton from "../../PageNavButtons/LastPageButton";
 import NextPageButton from "../../PageNavButtons/NextPageButton";
 import MovieItem from "../MovieItem/MovieItem";
 
-
-const Content = ({ genreId, page, setMovies, setPage, genreName, movies }) => {
+const Content = ({ props, option }) => {
+  const { page, genreName, movies } = props;
   let renderMovieList;
 
   if (movies && movies.results.length > 0) {
     renderMovieList = movies.results.map((movie) => (
-      <MovieItem
-        movie={movie}
-        key={movie.id}
-        poster_path={movie.poster_path}
-        title={movie.title}
-        id={movie.id}
-      />
+      <MovieItem movie={movie} key={movie.id} />
     ));
   }
-
   return (
     <div className="container-main">
       <div className="content-header">
@@ -33,24 +26,8 @@ const Content = ({ genreId, page, setMovies, setPage, genreName, movies }) => {
         {renderMovieList}
       </div>
       <div className="pageNavigation-container">
-        {renderMovieList && (
-          <NextPageButton
-            setMovies={setMovies}
-            setPage={setPage}
-            page={page}
-            genreId={genreId}
-            genreName={genreName}
-          />
-        )}
-        {page > 1 ? (
-          <PreviousPageButton
-            setMovies={setMovies}
-            setPage={setPage}
-            page={page}
-            genreId={genreId}
-            genreName={genreName}
-          />
-        ) : null}
+        {renderMovieList && <NextPageButton props={props} option={option} />}
+        {page > 1 ? <PreviousPageButton option={option} props={props} /> : null}
       </div>
     </div>
   );

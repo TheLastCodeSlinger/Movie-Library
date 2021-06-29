@@ -5,7 +5,8 @@ import { animateScroll as scroll } from "react-scroll";
 
 import tmdbAPI from "../../API/tmdbAPI";
 
-const NextPageButton = ({ setMovies, setPage, page, genreId, genreName }) => {
+const NextPageButton = ({ props, option }) => {
+  const { setPage, setMovies, page, genreId, genreName } = props;
   let navigateToNextPage;
   let changeUrlToNextPage;
   let params = {};
@@ -34,7 +35,7 @@ const NextPageButton = ({ setMovies, setPage, page, genreId, genreName }) => {
         query: genreName,
       },
     };
-  } else if (isNaN(genreId)) {
+  } else if (isNaN(genreId) && genreId !== "query") {
     changeUrlToNextPage = `/Discover/${genreName}?page=${page + 1}`;
     navigateToNextPage = `/movie/${genreId}`;
     params = {
@@ -51,6 +52,7 @@ const NextPageButton = ({ setMovies, setPage, page, genreId, genreName }) => {
         language: "en-US",
         page: page + 1,
         with_genres: genreId,
+        sort_by: option,
       },
     };
   }

@@ -15,7 +15,7 @@ const MobileSidebar = ({ genre }) => {
   return (
     <Fragment>
       <div className="iconWrapper" onClick={openSidebarHandler}>
-        <img src={`${MobileIconSvg}`} />
+        <img src={`${MobileIconSvg}`} alt="Open Mobilesidebar Icon" />
       </div>
       {isOpen ? (
         <div className="mobileSidebar">

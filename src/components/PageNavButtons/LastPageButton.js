@@ -5,17 +5,11 @@ import { animateScroll as scroll } from "react-scroll";
 
 import tmdbAPI from "../../API/tmdbAPI";
 
-const PreviousPageButton = ({
-  setMovies,
-  setPage,
-  page,
-  genreId,
-  genreName,
-}) => {
+const PreviousPageButton = ({props, option}) => {
+  const {setMovies, setPage, page, genreName, genreId} = props
   let navigateToPreviousPage;
   let changeUrlToPreviousPage;
   let params;
-
   //Genres have a Number as Id(2,22,322) whereas Discover has a String-Id (Popular/Top_rated). "query" is hardcoded in Search.js specially for this check
   if (genreId === "query") {
     navigateToPreviousPage = `/search/movie`;
@@ -44,6 +38,7 @@ const PreviousPageButton = ({
         language: "en-US",
         page: page - 1,
         with_genres: genreId,
+        sort_by: option
       },
     };
   }
@@ -52,8 +47,10 @@ const PreviousPageButton = ({
     const fetchData = async () => {
       const result = await tmdbAPI.get(navigateToPreviousPage, params);
       setMovies(result.data);
-      setPage(page - 1);
+      console.log(result.data);
+      
     };
+    setPage(page - 1);
     fetchData();
     scroll.scrollToTop({
       smooth: true,

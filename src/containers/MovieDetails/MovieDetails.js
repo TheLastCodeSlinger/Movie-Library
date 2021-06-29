@@ -10,11 +10,16 @@ import { animateScroll as scroll } from "react-scroll";
 import tmdbAPI from "../../API/tmdbAPI";
 import Nothing from "../../Assets/Nothing.svg";
 import Cast from "../../components/Cast/Cast";
-import { ExternalHomePage, Imdb, Trailer } from "../../components/ExternalLinks/ExternalLinks";
+import {
+  ExternalHomePage,
+  Imdb,
+  Trailer,
+} from "../../components/ExternalLinks/ExternalLinks";
 import MovieItem from "../../components/Movie/MovieItem/MovieItem";
 import Rating from "../../components/Rating/Rating";
 
-const MovieDetails = ({ movieDetails, setMovieDetails, isMobile }) => {
+const MovieDetails = ({ isMobile }) => {
+  const [movieDetails, setMovieDetails] = useState();
   const match = useRouteMatch();
   const movieId = match.params.movieId;
   const [cast, setCast] = useState(null);
@@ -22,7 +27,7 @@ const MovieDetails = ({ movieDetails, setMovieDetails, isMobile }) => {
   const [trailer, setTrailer] = useState(null);
 
   useEffect(() => {
-    setMovieDetails(null)
+    setMovieDetails(null);
     const fetchAllMovieDetails = async () => {
       const result = await tmdbAPI.get(`/movie/${movieId}`, {
         params: {

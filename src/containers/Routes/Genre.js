@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 
@@ -6,16 +6,8 @@ import tmdbAPI from "../../API/tmdbAPI";
 import Content from "../../components/Movie/Content/Content";
 import SortBy from "../../components/SortBy/Sortby";
 
-const RenderGenre = ({
-  setMovies,
-  setPage,
-  setGenreId,
-  setGenreName,
-  page,
-  genreName,
-  movies,
-  genreId,
-}) => {
+const RenderGenre = ({ ...props }) => {
+  const { setMovies, setPage, setGenreId, setGenreName, page, genreId, history, genreName } = props;
   //Get Genre-Id from clicked <Link/>
   const location = useLocation();
   const id = location.state?.id;
@@ -24,7 +16,9 @@ const RenderGenre = ({
     value: "popularity.desc",
     label: "Popularity",
   });
-  
+  // prevOptionRev will be an object. In the useEffect i assign {key:current value: beforeChangeOption }. The prevOption stores this key/value. The if-check in the useEffect checks whether a new option has been chosen and rerenders if true.
+  const prevOptionRef = useRef();
+  const prevOption = prevOptionRef.current;
 
   //Fetch the Genre-List > setMovies to this List > Rerender & Display Genre-Page1
   useEffect(() => {
@@ -41,7 +35,7 @@ const RenderGenre = ({
       setGenreId(id);
     };
     //check if still in same genre . Yes = nothing happens. Else = execude code+rerender.
-    if (genreId !== id || option.value) {
+    if (genreId !== id) {
       fetchClickedCategoryData();
       setPage(1);
       setGenreName(genName);
@@ -51,20 +45,46 @@ const RenderGenre = ({
         offSet: 100,
       });
     }
-  }, [id, page, option.value, setMovies, setGenreName, setGenreId, setPage]);
+  }, [
+    prevOptionRef,
+    prevOption,
+    genName,
+    genreId,
+    id,
+    page,
+    option.value,
+    setMovies,
+    setGenreName,
+    setGenreId,
+    setPage,
+  ]);
+
+  useEffect(() => {
+    prevOptionRef.current = option.value;
+    const fetchClickedCategoryData = async () => {
+      const result = await tmdbAPI.get(`/discover/movie`, {
+        params: {
+          language: "en-US",
+          page: 1,
+          with_genres: id,
+          sort_by: option.value,
+        },
+      });
+      setMovies(result.data);
+      setGenreId(id);
+    };
+
+    if (option.value !== prevOption) {
+      setPage(1);
+      fetchClickedCategoryData()
+      history.replace(`/Genre/${genreName}?page=1`)
+    }
+  },[prevOptionRef, prevOption, option.value, id, setGenreId, setMovies, setPage, genreName, history]);
 
   return (
     <div style={{ display: "flex", width: "100%", flexDirection: "column" }}>
       <SortBy option={option} setOption={setOption} />
-      <Content
-        movies={movies}
-        setMovies={setMovies}
-        page={page}
-        setPage={setPage}
-        genreId={genreId}
-        setGenreId={setGenreId}
-        genreName={genreName}
-      />
+      <Content props={props} option={option} />
     </div>
   );
 };

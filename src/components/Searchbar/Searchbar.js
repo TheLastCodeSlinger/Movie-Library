@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import SearchSvg from "../../Assets/Search.svg";
 
-const SearchBar = () => {
+const SearchBar = ({setGenreId}) => {
   const [input, setInput] = useState("");
   const node = useRef();
   const inputFocus = useRef();
@@ -18,6 +18,7 @@ const SearchBar = () => {
       return;
     }
     setInput("");
+    setGenreId("query")
     history.push(`/search/${input}`);
   };
 

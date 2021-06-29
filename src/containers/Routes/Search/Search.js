@@ -8,27 +8,23 @@ import MovieItem from "../../../components/Movie/MovieItem/MovieItem";
 import PreviousPageButton from "../../../components/PageNavButtons/LastPageButton";
 import NextPageButton from "../../../components/PageNavButtons/NextPageButton";
 
-const Search = ({
-  page,
-  movies,
-  setMovies,
-  setPage,
-  setGenreId,
-  setGenreName,
-  genreName,
-}) => {
+const Search = ({ ...props }) => {
+  const {
+    page,
+    movies,
+    setMovies,
+    setPage,
+    setGenreId,
+    setGenreName,
+    genreName,
+    genreId,
+  } = props;
   const match = useRouteMatch();
 
   let renderMovieList;
   if (movies && movies.results.length > 1) {
     renderMovieList = movies.results.map((movie) => (
-      <MovieItem
-        movie={movie}
-        key={movie.id}
-        poster_path={movie.poster_path}
-        title={movie.title}
-        id={movie.id}
-      />
+      <MovieItem movie={movie} key={movie.id} />
     ));
   } else {
     renderMovieList = (
@@ -55,31 +51,24 @@ const Search = ({
       setPage(1);
       setGenreId("query");
     }
-  }, [match.params.query, page, setGenreId, setPage, setMovies]);
+  }, [
+    genreName,
+    setGenreName,
+    genreId,
+    match.params.query,
+    page,
+    setGenreId,
+    setPage,
+    setMovies,
+  ]);
 
   return (
     <div className="wrapper">
       <h2 className="titlee">{`Search for: "${match.params.query}"`}</h2>
       <div className="searchMoviesWrapper">{renderMovieList}</div>
       <div className="pageNavigation-container">
-        {renderMovieList ? (
-          <NextPageButton
-            setMovies={setMovies}
-            setPage={setPage}
-            page={page}
-            genreName={match.params.query}
-            genreId={"query"}
-          />
-        ) : null}
-        {page > 1 ? (
-          <PreviousPageButton
-            setMovies={setMovies}
-            setPage={setPage}
-            page={page}
-            genreId={"query"}
-            genreName={match.params.query}
-          />
-        ) : null}
+        {renderMovieList ? <NextPageButton props={props} /> : null}
+        {page > 1 ? <PreviousPageButton props={props} /> : null}
       </div>
     </div>
   );

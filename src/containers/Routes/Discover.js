@@ -5,16 +5,8 @@ import { animateScroll as scroll } from "react-scroll";
 import tmdbAPI from "../../API/tmdbAPI";
 import Content from "../../components/Movie/Content/Content";
 
-const RenderDiscover = ({
-  setMovies,
-  setPage,
-  setGenreName,
-  setGenreId,
-  genreId,
-  movies,
-  page,
-  genreName,
-}) => {
+const RenderDiscover = ({ ...props }) => {
+  const { setMovies, setPage, setGenreName, setGenreId, genreId, page } = props;
   //Get State from clicked <Link/>
   const location = useLocation();
   const id = location.state?.id;
@@ -44,19 +36,18 @@ const RenderDiscover = ({
         offSet: 100,
       });
     }
-  }, [discName, page, setGenreId, setMovies, setPage, setGenreName]);
+  }, [
+    genreId,
+    id,
+    discName,
+    page,
+    setGenreId,
+    setMovies,
+    setPage,
+    setGenreName,
+  ]);
 
-  return (
-    <Content
-      movies={movies}
-      setMovies={setMovies}
-      page={page}
-      setPage={setPage}
-      genreId={genreId}
-      setGenreId={setGenreId}
-      genreName={genreName}
-    />
-  );
+  return <Content props={props} />;
 };
 
 export default RenderDiscover;
