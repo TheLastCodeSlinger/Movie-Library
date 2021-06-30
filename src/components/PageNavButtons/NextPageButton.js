@@ -52,7 +52,7 @@ const NextPageButton = ({ props, option }) => {
         language: "en-US",
         page: page + 1,
         with_genres: genreId,
-        sort_by: option,
+        sort_by: option.value,
       },
     };
   }

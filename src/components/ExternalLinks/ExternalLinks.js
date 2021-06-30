@@ -37,7 +37,9 @@ export const Trailer = (url) => {
     );
   }
 
-  return <Fragment>{modal}</Fragment>;
+  return  <Fragment>
+            {modal}
+          </Fragment>;
 };
 
 export const ExternalHomePage = (url) => {

@@ -16,7 +16,7 @@ const CastItem = (cast) => {
           />
         ) : (
           <div className="profile-img">
-            <Avatar className="profile-img" />
+            <Avatar className="profile-img" alt="Avatar" />
           </div>
         )}
       </div>

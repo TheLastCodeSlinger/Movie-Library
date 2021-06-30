@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TemporaryDrawer({ genre, openSidebarHandler, isOpen }) {
+const TemporaryDrawer = ({ genre, openSidebarHandler, isOpen }) => {
   const classes = useStyles();
 
   const list = () => (
@@ -56,3 +56,5 @@ export default function TemporaryDrawer({ genre, openSidebarHandler, isOpen }) {
     </div>
   );
 }
+
+export default TemporaryDrawer;
