@@ -7,7 +7,16 @@ import Content from "../../components/Movie/Content/Content";
 import SortBy from "../../components/SortBy/Sortby";
 
 const RenderGenre = ({ ...props }) => {
-  const { setMovies, setPage, setGenreId, setGenreName, page, genreId, history, genreName } = props;
+  const {
+    setMovies,
+    setPage,
+    setGenreId,
+    setGenreName,
+    page,
+    genreId,
+    history,
+    genreName,
+  } = props;
   //Get Genre-Id from clicked <Link/>
   const location = useLocation();
   const id = location.state?.id;
@@ -62,24 +71,38 @@ const RenderGenre = ({ ...props }) => {
   useEffect(() => {
     prevOptionRef.current = option.value;
     const fetchClickedCategoryData = async () => {
-      const result = await tmdbAPI.get(`/discover/movie`, {
-        params: {
-          language: "en-US",
-          page: 1,
-          with_genres: id,
-          sort_by: option.value,
-        },
-      });
-      setMovies(result.data);
-      setGenreId(id);
+      await tmdbAPI
+        .get(`/discover/movie`, {
+          params: {
+            language: "en-US",
+            page: 1,
+            with_genres: id,
+            sort_by: option.value,
+          },
+        })
+        .then((response) => {
+          setMovies(response.data);
+          setGenreId(id);
+        })
+        .catch((err) => alert(`Error: ${err.response.data.status_message}`));
     };
 
     if (option.value !== prevOption) {
       setPage(1);
-      fetchClickedCategoryData()
-      history.replace(`/Genre/${genreName}?page=1`)
+      fetchClickedCategoryData();
+      history.replace(`/Genre/${genreName}?page=1`);
     }
-  },[prevOptionRef, prevOption, option.value, id, setGenreId, setMovies, setPage, genreName, history]);
+  }, [
+    prevOptionRef,
+    prevOption,
+    option.value,
+    id,
+    setGenreId,
+    setMovies,
+    setPage,
+    genreName,
+    history,
+  ]);
 
   return (
     <div style={{ display: "flex", width: "100%", flexDirection: "column" }}>

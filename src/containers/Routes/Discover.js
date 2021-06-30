@@ -16,14 +16,18 @@ const RenderDiscover = ({ ...props }) => {
   //Fetch the Discover-List> setMovies to this List > Rerender & Display Discover/XXX
   useEffect(() => {
     const fetchClickedGenreData = async () => {
-      const result = await tmdbAPI.get(`/movie/${id}`, {
-        params: {
-          language: "en-US",
-          page: page,
-        },
-      });
-      setMovies(result.data);
-      setGenreId(id);
+      await tmdbAPI
+        .get(`/movie/${id}`, {
+          params: {
+            language: "en-US",
+            page: page,
+          },
+        })
+        .then((response) => {
+          setMovies(response.data);
+          setGenreId(id);
+        })
+        .catch((err) => alert(`Error: ${err.response.data.status_message}`));
     };
     //Safety - only fetch new Discovery/setPage if a new link is clicked.. Compares the genreId(which is saved in a State) with the clicked Link(passes id as state). prevents unwanted resets,
     if (genreId !== id) {

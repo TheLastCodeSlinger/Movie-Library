@@ -17,17 +17,21 @@ const Person = () => {
   //Fetch ID from url => Use id to fetch data
   useEffect(() => {
     const fetchPersonData = async () => {
-      const result = await tmdbAPI.get(`/person/${match.params.personId}`, {
-        params: {
-          language: "en-US",
-        },
-      });
-      setPersonData(result.data);
-      scroll.scrollToTop({
-        smooth: true,
-        duration: 600,
-        offSet: 100,
-      });
+      await tmdbAPI
+        .get(`/person/${match.params.personId}`, {
+          params: {
+            language: "en-US",
+          },
+        })
+        .then((response) => {
+          setPersonData(response.data);
+          scroll.scrollToTop({
+            smooth: true,
+            duration: 600,
+            offSet: 100,
+          });
+        })
+        .catch((err) => alert(`Error: ${err.response.data.status_message}`));
     };
     fetchPersonData();
   }, [match.params.personId]);
@@ -35,15 +39,16 @@ const Person = () => {
   //Fetch movies where the person also played in.
   useEffect(() => {
     const fetchCreditMovies = async () => {
-      const result = await tmdbAPI.get(
-        `/person/${match.params.personId}/movie_credits`,
-        {
+      await tmdbAPI
+        .get(`/person/${match.params.personId}/movie_credits`, {
           params: {
             language: "en-US",
           },
-        }
-      );
-      setMovieCredits(result.data);
+        })
+        .then((response) => {
+          setMovieCredits(response.data);
+        })
+        .catch((err) => alert(`Error: ${err.response.data.status_message}`));
     };
     fetchCreditMovies();
   }, [match.params.personId]);

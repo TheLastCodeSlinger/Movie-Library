@@ -13,8 +13,12 @@ const NextPageButton = ({ props, option }) => {
 
   const nextPageHandler = () => {
     const fetchData = async () => {
-      const result = await tmdbAPI.get(navigateToNextPage, params);
-      setMovies(result.data);
+      await tmdbAPI
+        .get(navigateToNextPage, params)
+        .then((response) => {
+          setMovies(response.data);
+        })
+        .catch((err) => alert(`Error: ${err.response.data.status_message}`));
     };
     setPage(page + 1);
     fetchData();

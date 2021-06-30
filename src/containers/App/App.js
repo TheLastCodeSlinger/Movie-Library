@@ -20,22 +20,26 @@ function App() {
   const [page, setPage] = useState(1);
   const [genreId, setGenreId] = useState();
   const [genreName, setGenreName] = useState("");
-  const [genre, setGenre] = useState(0);
+  const [genre, setGenre] = useState();
   const [isMobile, setisMobile] = useState(null);
   const history = createBrowserHistory();
 
   //Loading the movies for the landing/first page and setting states
   useEffect(() => {
     const fetchPopularDataInitial = async () => {
-      const result = await tmdbAPI.get(`/movie/popular`, {
-        params: {
-          language: "en-US",
-          page: 1,
-        },
-      });
-      setMovies(result.data);
-      setGenreName("Popular");
-      setGenreId("popular");
+      await tmdbAPI
+        .get(`/movie/popular`, {
+          params: {
+            language: "en-US",
+            page: 1,
+          },
+        })
+        .then((response) => {
+          setMovies(response.data);
+          setGenreName("Popular");
+          setGenreId("popular");
+        })
+        .catch((err) => alert(`Error: ${err.response.data.status_message}`));
     };
     fetchPopularDataInitial();
   }, []);
@@ -43,12 +47,16 @@ function App() {
   //Fetch an Array, where all Genre-Tags are listed as strings.
   useEffect(() => {
     const fetchGenreCateforiesData = async () => {
-      const result = await tmdbAPI.get(`/genre/movie/list`, {
-        params: {
-          language: "en-US",
-        },
-      });
-      setGenre(result.data);
+      await tmdbAPI
+        .get(`/genre/movie/list`, {
+          params: {
+            language: "en-US",
+          },
+        })
+        .then((response) => {
+          setGenre(response.data);
+        })
+        .catch((err) => alert(`Error: ${err.response.data.status_message}`));
     };
     fetchGenreCateforiesData();
   }, []);
@@ -121,9 +129,7 @@ function App() {
           </Route>
 
           <Route path="/Movie/:movieName/:movieId" exact>
-            <MovieDetails
-              isMobile={isMobile}
-            />
+            <MovieDetails isMobile={isMobile} />
           </Route>
 
           <Route path="/Person/:personId" exact>

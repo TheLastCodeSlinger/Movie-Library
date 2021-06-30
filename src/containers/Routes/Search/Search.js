@@ -35,14 +35,18 @@ const Search = ({ ...props }) => {
   //Get the searchquery from URL and then use it to search fetch data
   useEffect(() => {
     const fetchSearchMovies = async () => {
-      const result = await tmdbAPI.get(`/search/movie`, {
-        params: {
-          language: "en-US",
-          query: match.params.query,
-          page: page,
-        },
-      });
-      setMovies(result.data);
+      await tmdbAPI
+        .get(`/search/movie`, {
+          params: {
+            language: "en-US",
+            query: match.params.query,
+            page: page,
+          },
+        })
+        .then((response) => {
+          setMovies(response.data);
+        })
+        .catch((err) => alert(`Error: ${err.response.data.status_message}`));
     };
     fetchSearchMovies();
     //Rendercondition: Checks if new search has been used.. setGenreId to "query" used to navigate/trigger search.js.

@@ -5,8 +5,8 @@ import { animateScroll as scroll } from "react-scroll";
 
 import tmdbAPI from "../../API/tmdbAPI";
 
-const PreviousPageButton = ({props, option}) => {
-  const {setMovies, setPage, page, genreName, genreId} = props
+const PreviousPageButton = ({ props, option }) => {
+  const { setMovies, setPage, page, genreName, genreId } = props;
   let navigateToPreviousPage;
   let changeUrlToPreviousPage;
   let params;
@@ -39,17 +39,20 @@ const PreviousPageButton = ({props, option}) => {
         language: "en-US",
         page: page - 1,
         with_genres: genreId,
-        sort_by: option.value
+        sort_by: option.value,
       },
     };
   }
 
   const prevPageHandler = () => {
     const fetchData = async () => {
-      const result = await tmdbAPI.get(navigateToPreviousPage, params);
-      setMovies(result.data);
-      setPage(page - 1);
-      
+      await tmdbAPI
+        .get(navigateToPreviousPage, params)
+        .then((response) => {
+          setMovies(response.data);
+          setPage(page - 1);
+        })
+        .catch((err) => alert(`Error: ${err.response.data.status_message}`));
     };
     fetchData();
     scroll.scrollToTop({

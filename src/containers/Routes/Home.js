@@ -8,16 +8,20 @@ const LandingPage = ({ ...props }) => {
   //Fetch Discover/Popular page and render it.
   useEffect(() => {
     const fetchPopularPageOneData = async () => {
-      const result = await tmdbAPI.get(`/movie/popular`, {
-        params: {
-          language: "en-US",
-          page: 1,
-        },
-      });
-      setMovies(result.data);
-      setGenreName("Popular");
-      setGenreId("popular");
-      setPage(1);
+      await tmdbAPI
+        .get(`/movie/popular`, {
+          params: {
+            language: "en-US",
+            page: 1,
+          },
+        })
+        .then((response) => {
+          setMovies(response.data);
+          setGenreName("Popular");
+          setGenreId("popular");
+          setPage(1);
+        })
+        .catch((err) => alert(`Error: ${err.response.data.status_message}`));
     };
     fetchPopularPageOneData();
   }, [genreId, setMovies, setGenreId, setGenreName, setPage]);

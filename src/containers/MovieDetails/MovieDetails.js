@@ -29,12 +29,16 @@ const MovieDetails = ({ isMobile }) => {
   useEffect(() => {
     setMovieDetails(null);
     const fetchAllMovieDetails = async () => {
-      const result = await tmdbAPI.get(`/movie/${movieId}`, {
-        params: {
-          language: "en-US",
-        },
-      });
-      setMovieDetails(result.data);
+      await tmdbAPI
+        .get(`/movie/${movieId}`, {
+          params: {
+            language: "en-US",
+          },
+        })
+        .then((response) => {
+          setMovieDetails(response.data);
+        })
+        .catch((err) => alert(`Error: ${err.response.data.status_message}`));
     };
     fetchAllMovieDetails();
     scroll.scrollToTop({
@@ -45,38 +49,52 @@ const MovieDetails = ({ isMobile }) => {
   }, [movieId, setMovieDetails]);
 
   useEffect(() => {
+    setCast(null);
     const fetchCastMemberData = async () => {
-      const result = await tmdbAPI.get(`/movie/${movieId}/credits`, {
-        params: {
-          language: "en-US",
-        },
-      });
-      setCast(result.data);
+      await tmdbAPI
+        .get(`/movie/${movieId}/credits`, {
+          params: {
+            language: "en-US",
+          },
+        })
+        .then((response) => {
+          setCast(response.data);
+        })
+        .catch((err) => alert(`Error: ${err.response.data.status_message}`));
     };
     fetchCastMemberData();
   }, [movieDetails, movieId]);
 
   useEffect(() => {
+    setRecommendedMovies(null);
     const fetchRecommendedMovies = async () => {
-      const result = await tmdbAPI.get(`movie/${movieId}/recommendations`, {
-        params: {
-          language: "en-US",
-          page: 1,
-        },
-      });
-      setRecommendedMovies(result.data);
+      await tmdbAPI
+        .get(`movie/${movieId}/recommendations`, {
+          params: {
+            language: "en-US",
+            page: 1,
+          },
+        })
+        .then((response) => {
+          setRecommendedMovies(response.data);
+        })
+        .catch((err) => alert(`Error: ${err.response.data.status_message}`));
     };
     fetchRecommendedMovies();
   }, [movieDetails, movieId]);
 
   useEffect(() => {
     const fetchTrailerDetails = async () => {
-      const result = await tmdbAPI.get(`movie/${movieId}/videos`, {
-        params: {
-          language: "en-US",
-        },
-      });
-      setTrailer(result.data);
+      await tmdbAPI
+        .get(`movie/${movieId}/videos`, {
+          params: {
+            language: "en-US",
+          },
+        })
+        .then((response) => {
+          setTrailer(response.data);
+        })
+        .catch((err) => alert(`Error: ${err.response.data.status_message}`));
     };
     fetchTrailerDetails();
   }, [movieId]);
